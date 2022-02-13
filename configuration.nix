@@ -64,6 +64,9 @@
             marcel.fractionalDpi: 1.92
           EOF
        '';
+    # setupCommands = ''
+    #     ${pkgs.xorg.xrandr}/bin/xrandr --output DP-0 --auto --output HDMI-0 --auto --scale 2x2 --right-of DP-0
+    # '';
     };
 
     windowManager.leftwm = {
@@ -114,7 +117,7 @@
     tcpdump
     wget
     firefox
-    # kitty
+    kitty
     plocate
     termite
     alacritty
