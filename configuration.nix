@@ -53,6 +53,17 @@
 
     displayManager = {
        defaultSession = "none+leftwm";
+       autoLogin = {
+          enable = true;
+          user = "marcel";
+        };
+       sessionCommands = ''
+           ${pkgs.xorg.xrdb}/bin/xrdb -merge <<EOF
+            Xft.dpi:   192
+            *.dpi: 192
+            marcel.fractionalDpi: 1.92
+          EOF
+       '';
     };
 
     windowManager.leftwm = {
@@ -61,7 +72,7 @@
     windowManager.i3 = {
       enable = true;
       extraPackages = with pkgs; [
-	dmenu
+	    dmenu
         i3status
         i3lock
         i3blocks
@@ -121,7 +132,7 @@
     zoxide
     starship
     exa
-    home-manager
+    # home-manager
     neofetch
     volumeicon
     sxhkd
@@ -142,12 +153,14 @@
     lua
     lua53Packages.luarocks
     python3
-    cope
     delta
     fd
     sad
     gh
     python3
+    xsel
+    nodejs
+    flameshot
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
