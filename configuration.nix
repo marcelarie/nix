@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -16,7 +17,7 @@
   boot.loader.grub.useOSProber = true;
 
   networking.hostName = "nixos"; # Define your hostname.
-  networking.networkmanager.enable = true;  # enables wireless support via wpa_supplicant.
+  networking.networkmanager.enable = true; # enables wireless support via wpa_supplicant.
 
   # Set your time zone.
   time.timeZone = "Europe/Madrid";
@@ -52,21 +53,21 @@
     dpi = 192;
 
     displayManager = {
-       defaultSession = "none+leftwm";
-       autoLogin = {
-          enable = true;
-          user = "marcel";
-        };
-       sessionCommands = ''
-           ${pkgs.xorg.xrdb}/bin/xrdb -merge <<EOF
-            Xft.dpi:   192
-            *.dpi: 192
-            marcel.fractionalDpi: 1.92
-          EOF
-       '';
-    # setupCommands = ''
-    #     ${pkgs.xorg.xrandr}/bin/xrandr --output DP-0 --auto --output HDMI-0 --auto --scale 2x2 --right-of DP-0
-    # '';
+      defaultSession = "none+leftwm";
+      autoLogin = {
+        enable = true;
+        user = "marcel";
+      };
+      sessionCommands = ''
+         ${pkgs.xorg.xrdb}/bin/xrdb -merge <<EOF
+          Xft.dpi:   192
+          *.dpi: 192
+          marcel.fractionalDpi: 1.92
+        EOF
+      '';
+      # setupCommands = ''
+      #     ${pkgs.xorg.xrandr}/bin/xrandr --output DP-0 --auto --output HDMI-0 --auto --scale 2x2 --right-of DP-0
+      # '';
     };
 
     windowManager.leftwm = {
@@ -75,7 +76,7 @@
     windowManager.i3 = {
       enable = true;
       extraPackages = with pkgs; [
-	    dmenu
+        dmenu
         i3status
         i3lock
         i3blocks
@@ -94,9 +95,23 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  # Remove sound.enable or turn it off if you had it set previously, it seems to cause conflicts with pipewire
+  # sound.enable = true;
+  # hardware.pulseaudio.enable = true;
+  # rtkit is optional but recommended
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+
+    # use the example session manager (no others are packaged yet so this is enabled by default,
+    # no need to redefine it in your config for now)
+    #media-session.enable = true;
+  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -164,6 +179,10 @@
     xsel
     nodejs
     flameshot
+    rofi-power-menu
+    webcamoid
+    bluez
+    nixpkgs-fmt
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -176,16 +195,16 @@
   # };
 
   fonts.fonts = with pkgs; [
-      noto-fonts
-      noto-fonts-cjk
-      noto-fonts-emoji
-      liberation_ttf
-      fira-code
-      fira-code-symbols
-      mplus-outline-fonts
-      dina-font
-      proggyfonts
-      nerdfonts
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    liberation_ttf
+    fira-code
+    fira-code-symbols
+    mplus-outline-fonts
+    dina-font
+    proggyfonts
+    nerdfonts
   ];
 
   # List services that you want to enable:
