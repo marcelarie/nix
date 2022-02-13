@@ -119,7 +119,6 @@
     pkg-config
     bluez
     zoxide
-    oh-my-fish
     starship
     exa
     home-manager
@@ -143,16 +142,22 @@
     lua
     lua53Packages.luarocks
     python3
+    cope
+    delta
+    fd
+    sad
+    gh
+    python3
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
   programs.nm-applet.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
+  # programs.gnupg.agent = {
+  #   enable = true;
+  #   enableSSHSupport = true;
+  # };
 
   fonts.fonts = with pkgs; [
       noto-fonts
