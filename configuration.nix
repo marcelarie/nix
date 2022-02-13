@@ -25,11 +25,11 @@
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking.useDHCP = false;
-  networking.interfaces.br-60e92623429b.useDHCP = true;
-  networking.interfaces.docker0.useDHCP = true;
+  # networking.interfaces.br-60e92623429b.useDHCP = true;
+  # networking.interfaces.docker0.useDHCP = true;
   networking.interfaces.enp4s0.useDHCP = true;
-  networking.interfaces.tun0.useDHCP = true;
-  networking.interfaces.virbr0.useDHCP = true;
+  # networking.interfaces.tun0.useDHCP = true;
+  # networking.interfaces.virbr0.useDHCP = true;
   networking.interfaces.wlo1.useDHCP = true;
 
   # Configure network proxy if necessary
@@ -49,12 +49,12 @@
     desktopManager = {
       xterm.enable = true;
     };
-    dpi = 192;	
+    dpi = 192;
 
     displayManager = {
        defaultSession = "none+leftwm";
     };
-    
+
     windowManager.leftwm = {
       enable = true;
     };
@@ -93,13 +93,20 @@
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   };
 
+  services.xserver.videoDrivers = [ "nvidia" ];
+  nixpkgs.config.allowUnfree = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    vim
+    tcpdump
     wget
     firefox
-    kitty
+    # kitty
+    plocate
+    termite
+    alacritty
     fish
     git
     rustup
@@ -125,20 +132,40 @@
     skim
     pavucontrol
     ponymix
+    discord
+    unzip
+    fzf
+    fzy
+    arandr
+    autorandr
+    bat
+    ripgrep
+    lua
+    lua53Packages.luarocks
+    python3
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
   programs.nm-applet.enable = true;
-  # programs.neovim = {
-  #   enable  = true;
-  #   viAlias = true;
-  # };
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+
+  fonts.fonts = with pkgs; [
+      noto-fonts
+      noto-fonts-cjk
+      noto-fonts-emoji
+      liberation_ttf
+      fira-code
+      fira-code-symbols
+      mplus-outline-fonts
+      dina-font
+      proggyfonts
+      nerdfonts
+  ];
 
   # List services that you want to enable:
 
@@ -160,4 +187,3 @@
   system.stateVersion = "22.05"; # Did you read the comment?
 
 }
-
