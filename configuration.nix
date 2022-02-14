@@ -49,6 +49,7 @@
     enable = true;
     desktopManager = {
       xterm.enable = true;
+      xfce.enable = true;
     };
     dpi = 192;
 
@@ -119,7 +120,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.marcel = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" ];
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -136,7 +137,6 @@
     plocate
     termite
     alacritty
-    fish
     git
     rustup
     cargo
@@ -150,7 +150,6 @@
     zoxide
     starship
     exa
-    # home-manager
     neofetch
     volumeicon
     sxhkd
@@ -183,7 +182,21 @@
     webcamoid
     bluez
     nixpkgs-fmt
+    slack
+    docker-compose
+    xdotool
+    dunst
+    libnotify
+    rofimoji
+    sysz
+    openvpn
+    tldr
+    nix-prefetch-github
+    # home-manager
+    # fish
   ];
+
+  virtualisation.docker.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
