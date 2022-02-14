@@ -4,6 +4,9 @@
 
 { config, pkgs, ... }:
 
+let
+  unstable = import <nixos-unstable> { };
+in
 {
   imports =
     [
@@ -74,15 +77,15 @@
     windowManager.leftwm = {
       enable = true;
     };
-    windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-        dmenu
-        i3status
-        i3lock
-        i3blocks
-      ];
-    };
+    # windowManager.i3 = {
+    #   enable = true;
+    #   extraPackages = with pkgs; [
+    #     dmenu
+    #     i3status
+    #     i3lock
+    #     i3blocks
+    #   ];
+    # };
   };
 
   # Configure keymap in X11
@@ -137,7 +140,7 @@
     plocate
     termite
     alacritty
-    git
+    unstable.git
     rustup
     cargo
     gcc
