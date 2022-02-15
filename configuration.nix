@@ -28,13 +28,14 @@ in
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
+
   networking.useDHCP = false;
-  # networking.interfaces.br-60e92623429b.useDHCP = true;
-  # networking.interfaces.docker0.useDHCP = true;
   networking.interfaces.enp4s0.useDHCP = true;
+  networking.interfaces.wlo1.useDHCP = true;
+  # networking.interfaces.docker0.useDHCP = true;
+  # networking.interfaces.br-60e92623429b.useDHCP = true;
   # networking.interfaces.tun0.useDHCP = true;
   # networking.interfaces.virbr0.useDHCP = true;
-  networking.interfaces.wlo1.useDHCP = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -54,7 +55,8 @@ in
       xterm.enable = true;
       xfce.enable = true;
     };
-    dpi = 192;
+    dpi = 190;
+    # dpi = 110; # this is better for the dell 27i 4k screen
 
     displayManager = {
       defaultSession = "none+leftwm";
@@ -64,9 +66,9 @@ in
       };
       sessionCommands = ''
          ${pkgs.xorg.xrdb}/bin/xrdb -merge <<EOF
-          Xft.dpi:   192
-          *.dpi: 192
-          marcel.fractionalDpi: 1.92
+          Xft.dpi:   190
+          *.dpi: 190
+          marcel.fractionalDpi: 1.90
         EOF
       '';
       # setupCommands = ''
@@ -188,16 +190,24 @@ in
     slack
     docker-compose
     xdotool
-    dunst
+    # dunst
     libnotify
     rofimoji
     sysz
-    openvpn
     tldr
     nix-prefetch-github
+    glow
+    element-desktop
+    mitmproxy
+    xfce.xfce4-notifyd
+    # openvpn
     # home-manager
     # fish
   ];
+
+  services.openvpn.servers = {
+    soysuper = { config = '' /etc/openvpn/client/soysuper.conf ''; };
+  };
 
   virtualisation.docker.enable = true;
 
