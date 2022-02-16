@@ -48,6 +48,11 @@ in
     keyMap = "us";
   };
 
+  environment.variables = {
+    SYS_THEME = "dark";
+    VI_CONFIG = "~/.config/nvim/init.vim";
+  };
+
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
