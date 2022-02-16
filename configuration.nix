@@ -200,14 +200,13 @@ in
     element-desktop
     mitmproxy
     xfce.xfce4-notifyd
+    chromium
+    sumneko-lua-language-server
+    # update-systemd-resolved
     # openvpn
     # home-manager
     # fish
   ];
-
-  services.openvpn.servers = {
-    soysuper = { config = '' /etc/openvpn/client/soysuper.conf ''; };
-  };
 
   virtualisation.docker.enable = true;
 
@@ -232,6 +231,15 @@ in
     proggyfonts
     nerdfonts
   ];
+
+  # environment.etc.openvpn.source = "${pkgs.update-resolv-conf}/libexec/openvpn";
+  services.resolved.enable = true;
+  services.openvpn.servers = {
+    soysuper = {
+      config = '' config /root/nixos/openvpn/soysuper.conf '';
+      updateResolvConf = true;
+    };
+  };
 
   # List services that you want to enable:
 
