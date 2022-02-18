@@ -4,15 +4,22 @@
 
 { config, pkgs, ... }:
 
-let
-  unstable = import <nixos-unstable> { };
-in
+# let
+#   unstable = import <nixos-unstable> { };
+# in
 {
   imports =
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
+
+  nix = {
+    package = pkgs.nixUnstable; # or versioned attributes like nix_2_4
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -80,19 +87,9 @@ in
       #     ${pkgs.xorg.xrandr}/bin/xrandr --output DP-0 --auto --output HDMI-0 --auto --scale 2x2 --right-of DP-0
       # '';
     };
-
     windowManager.leftwm = {
       enable = true;
     };
-    # windowManager.i3 = {
-    #   enable = true;
-    #   extraPackages = with pkgs; [
-    #     dmenu
-    #     i3status
-    #     i3lock
-    #     i3blocks
-    #   ];
-    # };
   };
 
   # Configure keymap in X11
@@ -139,15 +136,15 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim
     tcpdump
     wget
     firefox
-    kitty
+    # kitty
     plocate
     termite
     alacritty
-    unstable.git
+    # unstable.git
+    git
     rustup
     cargo
     gcc
@@ -195,7 +192,6 @@ in
     slack
     docker-compose
     xdotool
-    # dunst
     libnotify
     rofimoji
     sysz
@@ -207,10 +203,15 @@ in
     xfce.xfce4-notifyd
     chromium
     sumneko-lua-language-server
+    kazam
+    mpv
+    yt-dlp
+    # dunst
     # update-systemd-resolved
     # openvpn
     # home-manager
     # fish
+    # vim
   ];
 
   virtualisation.docker.enable = true;
@@ -245,8 +246,6 @@ in
       updateResolvConf = true;
     };
   };
-
-  # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
