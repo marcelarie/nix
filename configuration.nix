@@ -206,6 +206,7 @@
     kazam
     mpv
     yt-dlp
+    pfetch
     # dunst
     # update-systemd-resolved
     # openvpn

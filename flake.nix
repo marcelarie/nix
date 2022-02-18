@@ -28,11 +28,14 @@
         ${me} = home-manager.lib.homeManagerConfiguration {
           inherit system pkgs;
           username = me;
+          stateVersion = "21.05";
           homeDirectory = "/home/${me}";
           configuration = {
             nixpkgs.overlays = overlays;
             imports = [
               ./home-manager/home.nix
+              # ./home-manager/programs/fish.nix
+              # ./home-manager/programs/kitty.nix
             ];
           };
         };
