@@ -29,7 +29,7 @@ with lib;
         selection_foreground = "#18191E";
         background = "#000000";
         background_opacity = "1.0";
-        inactive_text_alpha = "0.9";
+        inactive_text_alpha = "1.0";
 
         # Lighthouse color
         url_color = "#CCCCCC";
@@ -46,8 +46,7 @@ with lib;
         inactive_border_color = "#CCCCCC";
 
         # normal
-        # color0 #373C45
-        color0 = "#FF5050";
+        color0 = "#373C45";
         color1 = "#FF5050";
         # color1 = "#FF0500";
         color2 = "#44B273";

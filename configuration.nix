@@ -207,6 +207,7 @@ in
     pfetch
     discord
     python39Packages.pynvim
+    tridactyl-native
     # leftwm
     # chromium
     # dunst
