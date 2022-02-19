@@ -16,12 +16,10 @@
       pkgs = import nixpkgs {
         inherit system;
         config = { allowUnfree = true; };
+        overlays = [
+          neovim-nightly-overlay.overlay
+        ];
       };
-      overlays = [
-        # leftwm.overlay
-        neovim-nightly-overlay.overlay
-      ];
-      lib = nixpkgs.lib;
     in
     {
       homeConfigurations = {
@@ -31,7 +29,6 @@
           stateVersion = "21.05";
           homeDirectory = "/home/${me}";
           configuration = {
-            nixpkgs.overlays = overlays;
             imports = [
               ./home-manager/home.nix
             ];
@@ -40,13 +37,13 @@
       };
 
       nixosConfigurations = {
-        nixos = lib.nixosSystem {
+        nixos = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
+            ({ config, pkgs, ... }: { nixpkgs.overlays = [ leftwm.overlay ]; })
             ./configuration.nix
           ];
         };
       };
-
     };
 }

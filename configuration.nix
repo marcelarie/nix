@@ -4,9 +4,9 @@
 
 { config, pkgs, ... }:
 
-# let
-#   unstable = import <nixos-unstable> { };
-# in
+let
+  unstable = import <nixos-unstable> { };
+in
 {
   imports =
     [
@@ -143,7 +143,7 @@
     plocate
     termite
     alacritty
-    # unstable.git
+    unstable.git
     git
     rustup
     cargo
@@ -206,6 +206,8 @@
     yt-dlp
     pfetch
     discord
+    python39Packages.pynvim
+    # leftwm
     # chromium
     # dunst
     # update-systemd-resolved
