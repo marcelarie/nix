@@ -3,7 +3,7 @@
 {
   imports = [
     ./programs/kitty.nix
-    ./programs/fish.nix
+    ./programs/fish/fish.nix
   ];
 
   # Let Home Manager install and manage itself.

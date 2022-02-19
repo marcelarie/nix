@@ -166,7 +166,6 @@
     skim
     pavucontrol
     ponymix
-    discord
     unzip
     fzf
     fzy
@@ -201,12 +200,13 @@
     element-desktop
     mitmproxy
     xfce.xfce4-notifyd
-    chromium
     sumneko-lua-language-server
     kazam
     mpv
     yt-dlp
     pfetch
+    discord
+    # chromium
     # dunst
     # update-systemd-resolved
     # openvpn

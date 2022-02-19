@@ -18,13 +18,13 @@
         config = { allowUnfree = true; };
       };
       overlays = [
-        leftwm.overlay
+        # leftwm.overlay
         neovim-nightly-overlay.overlay
       ];
       lib = nixpkgs.lib;
     in
     {
-      homeManagerConfigurations = {
+      homeConfigurations = {
         ${me} = home-manager.lib.homeManagerConfiguration {
           inherit system pkgs;
           username = me;
@@ -34,8 +34,6 @@
             nixpkgs.overlays = overlays;
             imports = [
               ./home-manager/home.nix
-              # ./home-manager/programs/fish.nix
-              # ./home-manager/programs/kitty.nix
             ];
           };
         };
