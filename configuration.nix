@@ -4,9 +4,9 @@
 
 { config, pkgs, ... }:
 
-let
-  unstable = import <nixos-unstable> { };
-in
+# let
+#   unstable = import <nixos-unstable> { };
+# in
 {
   imports =
     [
@@ -20,6 +20,8 @@ in
       experimental-features = nix-command flakes
     '';
   };
+
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -143,7 +145,6 @@ in
     plocate
     termite
     alacritty
-    unstable.git
     git
     rustup
     cargo
@@ -153,7 +154,6 @@ in
     openssl.dev
     polybar
     pkg-config
-    bluez
     zoxide
     starship
     exa
@@ -208,6 +208,10 @@ in
     discord
     python39Packages.pynvim
     tridactyl-native
+    jq
+    mesa.drivers
+    signal-desktop
+    chromium
     # leftwm
     # chromium
     # dunst

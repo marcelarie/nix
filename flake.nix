@@ -2,7 +2,7 @@
   description = "My first flake";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-21.11";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     leftwm.url = "github:leftwm/leftwm";
@@ -11,23 +11,23 @@
 
   outputs = { self, nixpkgs, home-manager, leftwm, neovim-nightly-overlay }:
     let
-      me = "marcel";
+      username = "marcel";
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
         config = { allowUnfree = true; };
         overlays = [
           neovim-nightly-overlay.overlay
+          leftwm.overlay
         ];
       };
     in
     {
       homeConfigurations = {
-        ${me} = home-manager.lib.homeManagerConfiguration {
-          inherit system pkgs;
-          username = me;
-          stateVersion = "21.05";
-          homeDirectory = "/home/${me}";
+        ${username} = home-manager.lib.homeManagerConfiguration {
+          inherit system pkgs username;
+          # stateVersion = "21.05";
+          homeDirectory = "/home/${username}";
           configuration = {
             imports = [
               ./home-manager/home.nix
@@ -38,9 +38,9 @@
 
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
-          inherit system;
+          inherit system pkgs;
           modules = [
-            ({ config, pkgs, ... }: { nixpkgs.overlays = [ leftwm.overlay ]; })
+            # ({ config, pkgs, ... }: { nixpkgs.overlays = [ leftwm.overlay ]; })
             ./configuration.nix
           ];
         };

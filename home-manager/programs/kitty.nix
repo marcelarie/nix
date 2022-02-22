@@ -7,7 +7,7 @@ with lib;
       enable = true;
       font = {
         package = pkgs.fira-code;
-        name = "FiraCode 13";
+        name = "FiraCode";
       };
       settings = {
         font_size = "8.5";

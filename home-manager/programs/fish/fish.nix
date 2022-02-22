@@ -77,9 +77,8 @@
       zrc = "nvim ~/.zshrc";
       arc = "nvim ~/.config/alacritty/alacritty.yml";
       drc = "cd ~/.config/arco-dwm & nvim config.h";
-      frc = "nvim ~/.config/fish/prenix-config.fish";
-      sfrc = "source ~/.config/fish/config.fish";
-      krc = "nvim ~/.config/kitty/kitty.conf";
+      frc = "nvim ~/.config/nixos/home-manager/programs/fish/fish.nix";
+      krc = "nvim ~/.config/nixos/home-manager/programs/kitty.nix";
       brc = "nvim ~/.bashrc";
       lrc = "cd ~/.config/leftwm & nvim config.toml";
       clones = "~/clones";
