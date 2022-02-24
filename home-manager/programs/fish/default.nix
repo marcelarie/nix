@@ -154,6 +154,7 @@
       ctd = "cargo tree -d";
 
       ### NixOS ###
+      ns = "nix-shell";
       nrs = "sudo nixos-rebuild switch --flake ~/.config/nixos#";
       nrc = "nvim ~/.config/nixos/configuration.nix";
       nfrc = "nvim ~/.config/nixos/flake.nix";

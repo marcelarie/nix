@@ -106,22 +106,22 @@
   # services.printing.enable = true;
 
   # Remove sound.enable or turn it off if you had it set previously, it seems to cause conflicts with pipewire
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
   # rtkit is optional but recommended
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
+  # security.rtkit.enable = true;
+  # services.pipewire = {
+  #   enable = true;
+  #   alsa.enable = true;
+  #   alsa.support32Bit = true;
+  #   pulse.enable = true;
+  #   # If you want to use JACK applications, uncomment this
+  #   #jack.enable = true;
+  #
+  #   # use the example session manager (no others are packaged yet so this is enabled by default,
+  #   # no need to redefine it in your config for now)
+  #   #media-session.enable = true;
+  # };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -131,6 +131,8 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" ];
   };
+
+  users.extraGroups.networkmanager.members = [ "root" ];
 
   services.xserver.videoDrivers = [ "nvidia" ];
   nixpkgs.config.allowUnfree = true;
@@ -211,7 +213,9 @@
     jq
     mesa.drivers
     signal-desktop
-    chromium
+    # chromium
+    update-systemd-resolved
+    bind
     # leftwm
     # chromium
     # dunst
@@ -246,12 +250,20 @@
     nerdfonts
   ];
 
-  # environment.etc.openvpn.source = "${pkgs.update-resolv-conf}/libexec/openvpn";
   services.resolved.enable = true;
   services.openvpn.servers = {
     soysuper = {
-      config = '' config /root/nixos/openvpn/soysuper.conf '';
-      updateResolvConf = true;
+      config = ''
+        config /root/nixos/openvpn/soysuper.conf
+
+        script-security 2
+        up ${pkgs.update-systemd-resolved}/libexec/openvpn/update-systemd-resolved
+        up-restart
+        down ${pkgs.update-systemd-resolved}/libexec/openvpn/update-systemd-resolved
+        down-pre
+      '';
+      # autoStart = true;
+      # updateResolvConf = true;
     };
   };
 

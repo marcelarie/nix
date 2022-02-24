@@ -66,7 +66,11 @@ with lib;
         color14 = "#5AD1AA";
         color15 = "#FFFADE";
       };
-      # keybindings = { };
+
+      keybindings = {
+        "kitty_mod+l" = "kitten hints --type path --program - ";
+      };
+
       # extraConfig = "";
     };
 }
