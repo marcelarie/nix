@@ -12,6 +12,7 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      # ./nur.nix
     ];
 
   nix = {
@@ -213,6 +214,7 @@
     jq
     mesa.drivers
     signal-desktop
+    yarn
     # chromium
     update-systemd-resolved
     bind
@@ -224,6 +226,9 @@
     # home-manager
     # fish
     # vim
+
+    # NUR
+    nur.repos.crazazy.efm-langserver
   ];
 
   virtualisation.docker.enable = true;

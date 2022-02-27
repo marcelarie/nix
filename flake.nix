@@ -5,11 +5,14 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nur.url = github:nix-community/NUR;
+
     leftwm.url = "github:leftwm/leftwm";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs = { self, nixpkgs, home-manager, leftwm, neovim-nightly-overlay }:
+  outputs =
+    { self, nixpkgs, home-manager, nur, leftwm, neovim-nightly-overlay }:
     let
       username = "marcel";
       system = "x86_64-linux";
@@ -19,6 +22,7 @@
         overlays = [
           neovim-nightly-overlay.overlay
           leftwm.overlay
+          nur.overlay
         ];
       };
     in
