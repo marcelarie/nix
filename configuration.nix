@@ -148,7 +148,6 @@
     plocate
     termite
     alacritty
-    git
     rustup
     cargo
     gcc
@@ -179,7 +178,6 @@
     lua
     lua53Packages.luarocks
     python3
-    delta
     fd
     sad
     gh
@@ -228,7 +226,6 @@
     # vim
 
     # NUR
-    nur.repos.crazazy.efm-langserver
   ];
 
   virtualisation.docker.enable = true;

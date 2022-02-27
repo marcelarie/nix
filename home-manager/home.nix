@@ -53,7 +53,38 @@
       perl534Packages.PerlTidy
       perl534Packages.PerlCritic
       sqlite
+
+      nur.repos.crazazy.efm-langserver
     ];
+  };
+
+  programs.git = {
+    enable = true;
+    userName = "Marcel Arie";
+    userEmail = "googlillo@gmail.com";
+    # aliases = { prettylog = "..."; };
+    extraConfig = {
+      core = {
+        editor = "nvim";
+      };
+      color = {
+        ui = true;
+      };
+      init = {
+        defaultBranch = "main";
+      };
+      # push = { default = "simple"; };
+      # pull = { ff = "only"; };
+    };
+    # ignores = [ ".DS_Store" "*.pyc" ];
+    delta = {
+      enable = true;
+      options = {
+        navigate = true;
+        line-numbers = true;
+        syntax-theme = "calochortus-lyallii";
+      };
+    };
   };
 
   gtk = {
