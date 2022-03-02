@@ -10,7 +10,10 @@ with lib;
         name = "FiraCode";
       };
       settings = {
-        font_size = "8.5";
+        font_size = "8.0";
+        cursor_shape = "underline"; # (block, beam, underline)
+        cursor_beam_thickness = "0.5";
+        cursor_underline_thickness = "0.5";
         # cursor_stop_blinking_after = "15.0";
         # mouse_hide_wait = "3.0";
         focus_follows_mouse = true;

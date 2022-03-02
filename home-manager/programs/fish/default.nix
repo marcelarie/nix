@@ -3,7 +3,7 @@
 {
   config.programs.fish = {
     enable = true;
-    shellInit = builtins.readFile ~/.config/fish/prenix-config.fish;
+    shellInit = builtins.readFile ./prenix-config.fish;
     functions = {
       gld = ''
         set branch (git rev-parse --abbrev-ref HEAD)
@@ -155,14 +155,14 @@
 
       ### NixOS ###
       ns = "nix-shell";
-      nrs = "sudo nixos-rebuild switch --flake ~/.config/nixos#";
+      nfs = "sudo nixos-rebuild switch --flake ~/.config/nixos#";
+      nfu = "nix flake update ~/.config/nixos/";
       nrc = "nvim ~/.config/nixos/configuration.nix";
       nfrc = "nvim ~/.config/nixos/flake.nix";
-      nfu = "nix flake update ~/.config/nixos/";
       #-> ### Home Manager  ###
+      hmrc = "nvim ~/.config/nixos/home-manager/home.nix";
       # hms = "cd ~/.config/nixos/; home-manager switch --flake .";
       # hmsb = "cd ~/.config/nixos/; home-manager build --flake .";
-      hmrc = "nvim ~/.config/nixos/home-manager/home.nix";
 
       ### Cheat ###
       ch = "cheat";

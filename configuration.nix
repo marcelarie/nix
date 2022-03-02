@@ -29,27 +29,40 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
-  networking.networkmanager.enable = true; # enables wireless support via wpa_supplicant.
-
   # Set your time zone.
   time.timeZone = "Europe/Madrid";
 
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
+  networking = {
+    hostName = "nixos"; # Define your hostname.
+    networkmanager = {
+      # enables wireless support via wpa_supplicant.
+      enable = true;
+      packages = [ pkgs.networkmanager_openvpn ];
+    };
+    firewall.enable = false;
 
-  networking.useDHCP = false;
-  networking.interfaces.enp4s0.useDHCP = true;
-  networking.interfaces.wlo1.useDHCP = true;
-  # networking.interfaces.docker0.useDHCP = true;
-  # networking.interfaces.br-60e92623429b.useDHCP = true;
-  # networking.interfaces.tun0.useDHCP = true;
-  # networking.interfaces.virbr0.useDHCP = true;
+    # The global useDHCP flag is deprecated, therefore explicitly set to false here.
+    # Per-interface useDHCP will be mandatory in the future, so this generated config
+    # replicates the default behaviour.
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+    useDHCP = false;
+    interfaces.enp4s0.useDHCP = true;
+    interfaces.wlo1.useDHCP = true;
+    # interfaces.docker0.useDHCP = true;
+    # interfaces.br-60e92623429b.useDHCP = true;
+    # interfaces.tun0.useDHCP = true;
+    # interfaces.virbr0.useDHCP = true;
+
+    # Configure network proxy if necessary
+    # proxy.default = "http://user:password@proxy:port/";
+    # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+    # Open ports in the firewall.
+    # networking.firewall.allowedTCPPorts = [ ... ];
+    # networking.firewall.allowedUDPPorts = [ ... ];
+    # Or disable the firewall altogether.
+    # networking.firewall.enable = false;
+  };
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -108,7 +121,11 @@
 
   # Remove sound.enable or turn it off if you had it set previously, it seems to cause conflicts with pipewire
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio = {
+    enable = true;
+    extraModules = [ pkgs.pulseaudio-modules-bt ];
+    package = pkgs.pulseaudioFull;
+  };
   # rtkit is optional but recommended
   # security.rtkit.enable = true;
   # services.pipewire = {
@@ -141,91 +158,15 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    tcpdump
-    wget
-    firefox
-    # kitty
-    plocate
-    termite
-    alacritty
-    rustup
-    cargo
     gcc
     cmake
+    wget
     openssl
     openssl.dev
-    polybar
-    pkg-config
-    zoxide
-    starship
-    exa
-    neofetch
-    volumeicon
-    sxhkd
-    haskellPackages.greenclip
-    feh
-    rofi
-    skim
-    pavucontrol
-    ponymix
-    unzip
-    fzf
-    fzy
-    arandr
-    autorandr
-    bat
-    ripgrep
-    lua
-    lua53Packages.luarocks
-    python3
-    fd
-    sad
-    gh
-    python3
     xsel
-    nodejs
-    flameshot
-    rofi-power-menu
-    webcamoid
     bluez
-    nixpkgs-fmt
-    slack
-    docker-compose
     xdotool
-    libnotify
-    rofimoji
-    sysz
-    tldr
-    nix-prefetch-github
-    glow
-    element-desktop
-    mitmproxy
-    xfce.xfce4-notifyd
-    sumneko-lua-language-server
-    kazam
-    mpv
-    yt-dlp
-    pfetch
-    discord
-    python39Packages.pynvim
-    tridactyl-native
-    jq
-    mesa.drivers
-    signal-desktop
-    yarn
-    # chromium
-    update-systemd-resolved
     bind
-    # leftwm
-    # chromium
-    # dunst
-    # update-systemd-resolved
-    # openvpn
-    # home-manager
-    # fish
-    # vim
-
-    # NUR
   ];
 
   virtualisation.docker.enable = true;
@@ -271,12 +212,6 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

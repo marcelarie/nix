@@ -44,6 +44,7 @@
       nodePackages.typescript-language-server
       nodePackages.intelephense
       nodePackages.dockerfile-language-server-nodejs
+      nodePackages.yaml-language-server
       sumneko-lua-language-server
       texlab
       rust-analyzer
@@ -118,10 +119,87 @@
   programs.rofi = {
     enable = true;
     font = "FiraCode 20";
-    theme = ~/.config/rofi/themes/slate.rasi;
+    theme = ./programs/rofi/themes/slate.rasi;
   };
 
   home.packages = with pkgs;  [
+    tcpdump
+    firefox
+    plocate
+    termite
+    alacritty
+    rustup
+    polybar
+    pkg-config
+    zoxide
+    starship
+    exa
+    neofetch
+    volumeicon
+    sxhkd
+    haskellPackages.greenclip
+    feh
+    rofi
+    skim
+    pavucontrol
+    ponymix
+    unzip
+    fzf
+    fzy
+    arandr
+    autorandr
+    bat
+    ripgrep
+    lua
+    lua53Packages.luarocks
+    python3
+    fd
+    sad
+    gh
+    python3
+    nodejs
+    flameshot
+    rofi-power-menu
+    webcamoid
+    nixpkgs-fmt
+    slack
+    docker-compose
+    libnotify
+    rofimoji
+    sysz
+    tldr
+    nix-prefetch-github
+    glow
+    element-desktop
+    mitmproxy
+    xfce.xfce4-notifyd
+    sumneko-lua-language-server
+    kazam
+    mpv
+    yt-dlp
+    pfetch
+    discord
+    python39Packages.pynvim
+    tridactyl-native
+    jq
+    mesa.drivers
+    signal-desktop
+    yarn
+    update-systemd-resolved
+    htop
+    mongodb
+    # chromium
+    # leftwm
+    # chromium
+    # dunst
+    # update-systemd-resolved
+    # openvpn
+    # home-manager
+    # fish
+    # vim
+    # cargo
+
+    # NUR
     nodePackages.speed-test
     nodePackages.pnpm
     fzf
