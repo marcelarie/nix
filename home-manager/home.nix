@@ -111,8 +111,8 @@
     # };
     defaultApplications = {
       # "application/pdf" = [ "org.gnome.Evince.desktop" ];
-      "x-scheme-handler/http" = [ "firefox" ];
-      "x-scheme-handler/https" = [ "firefox" ];
+      "x-scheme-handler/http" = [ "firefox.desktop" ];
+      "x-scheme-handler/https" = [ "firefox.desktop" ];
     };
   };
 
@@ -188,6 +188,14 @@
     update-systemd-resolved
     htop
     mongodb
+    nodePackages.speed-test
+    nodePackages.pnpm
+    fzf
+    chromium
+
+    # NUR
+    nur.repos.afreakk.mongosh
+
     # chromium
     # leftwm
     # chromium
@@ -198,11 +206,6 @@
     # fish
     # vim
     # cargo
-
-    # NUR
-    nodePackages.speed-test
-    nodePackages.pnpm
-    fzf
     # sumneko-lua-language-server
   ];
 

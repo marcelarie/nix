@@ -1,7 +1,6 @@
-# nix
-ツ
+## my personal nix config
 
-#### command
-`MY_NIX_PATH=/home/marcel/.config/nixos`
-`nixos-rebuild switch -I nixos-config=$MY_NIX_PATH`
-
+- to use this configuration
+```
+nixos-rebuild switch --flake <this_configuration_path>
+```

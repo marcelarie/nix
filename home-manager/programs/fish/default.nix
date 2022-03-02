@@ -160,7 +160,7 @@
       nrc = "nvim ~/.config/nixos/configuration.nix";
       nfrc = "nvim ~/.config/nixos/flake.nix";
       #-> ### Home Manager  ###
-      hmrc = "nvim ~/.config/nixos/home-manager/home.nix";
+      hrc = "nvim ~/.config/nixos/home-manager/home.nix";
       # hms = "cd ~/.config/nixos/; home-manager switch --flake .";
       # hmsb = "cd ~/.config/nixos/; home-manager build --flake .";
 
