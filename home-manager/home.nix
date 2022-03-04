@@ -188,10 +188,14 @@
     update-systemd-resolved
     htop
     mongodb
+    mongodb-tools
     nodePackages.speed-test
     nodePackages.pnpm
     fzf
     chromium
+    brave
+    hugo
+    cht-sh
 
     # NUR
     nur.repos.afreakk.mongosh
@@ -208,6 +212,8 @@
     # cargo
     # sumneko-lua-language-server
   ];
+
+  programs.java.enable = true;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

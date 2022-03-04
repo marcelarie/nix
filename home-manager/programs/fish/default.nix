@@ -16,6 +16,17 @@
       curent_branch = "git symbolic-ref --short HEAD";
       hms = "cd ~/.config/nixos/; git add --all; home-manager switch --flake . $argv; cd -";
       hmb = "cd ~/.config/nixos/; git add --all; home-manager build --flake . $argv; cd -";
+      trs = ''
+        if test -z "$argv"
+            curl -s -X GET "https://libretranslate.com/languages" \
+                -H  "accept: application/json"  | jq .;
+            return 1;
+        end
+          curl -s 'https://libretranslate.de/translate' \
+                 -H 'Content-Type: application/json' \
+                 -d "{\"q\":\"$argv[1..-3]\",\"source\":\"$argv[-2]\",\"target\":\"$argv[-1]\"}" \
+                 | jq .translatedText
+      '';
     };
     shellAliases = {
       ls = "exa --git";
@@ -132,6 +143,7 @@
       locate = "plocate";
       # klay  =  "setxkbmap (printf \" es\nus\nus (dvorak)\nes (dvorak)\n " | fzy)";
       af = "xdotool type --delay 0 ( alias | fzy | awk -F' ' '{print $2}')";
+      chs = "cht.sh";
 
       #### Tmux ####
       #  t = "tmux attach || tmux new-session" # Attaches tmux to the last session; creates a new session if none exists.

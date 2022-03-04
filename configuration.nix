@@ -37,7 +37,7 @@
     networkmanager = {
       # enables wireless support via wpa_supplicant.
       enable = true;
-      packages = [ pkgs.networkmanager_openvpn ];
+      packages = [ pkgs.networkmanager-openvpn ];
     };
     firewall.enable = false;
 
