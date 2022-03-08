@@ -53,6 +53,7 @@
       nodePackages.prettier
       perl534Packages.PerlTidy
       perl534Packages.PerlCritic
+      perlPackages.PLS
       sqlite
 
       nur.repos.crazazy.efm-langserver
@@ -196,6 +197,7 @@
     brave
     hugo
     cht-sh
+    keepass
 
     # NUR
     nur.repos.afreakk.mongosh

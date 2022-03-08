@@ -18,8 +18,8 @@
       hmb = "cd ~/.config/nixos/; git add --all; home-manager build --flake . $argv; cd -";
       trs = ''
         if test -z "$argv"
-            curl -s -X GET "https://libretranslate.com/languages" \
-                -H  "accept: application/json"  | jq .;
+              curl -s -X GET "https://libretranslate.com/languages" \
+                  -H  "accept: application/json"  | jq -j '.[]|"\n", .code, " (",.name, ") "'
             return 1;
         end
           curl -s 'https://libretranslate.de/translate' \
