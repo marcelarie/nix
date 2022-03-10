@@ -29,6 +29,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.useOSProber = true;
 
+  systemd.services.systemd-udev-settle.enable = false;
+  systemd.services.NetworkManager-wait-online.enable = false;
+
   # Set your time zone.
   time.timeZone = "Europe/Madrid";
 
@@ -193,22 +196,7 @@
     nerdfonts
   ];
 
-  services.resolved.enable = true;
-  services.openvpn.servers = {
-    soysuper = {
-      config = ''
-        config /root/nixos/openvpn/soysuper.conf
-
-        script-security 2
-        up ${pkgs.update-systemd-resolved}/libexec/openvpn/update-systemd-resolved
-        up-restart
-        down ${pkgs.update-systemd-resolved}/libexec/openvpn/update-systemd-resolved
-        down-pre
-      '';
-      # autoStart = true;
-      # updateResolvConf = true;
-    };
-  };
+  networking.extraHosts = '' '';
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
