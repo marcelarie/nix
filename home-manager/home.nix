@@ -55,6 +55,7 @@
       perl534Packages.PerlCritic
       perlPackages.PLS
       sqlite
+      fzf
 
       nur.repos.crazazy.efm-langserver
     ];
@@ -214,6 +215,11 @@
     # cargo
     # sumneko-lua-language-server
   ];
+
+  wayland.windowManager.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+  };
 
   programs.java.enable = true;
 
