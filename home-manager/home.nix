@@ -55,6 +55,7 @@
       perl534Packages.PerlCritic
       perlPackages.PLS
       sqlite
+      fzf
 
       nur.repos.crazazy.efm-langserver
     ];
