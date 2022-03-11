@@ -20,7 +20,7 @@
     pointerCursor = {
       package = pkgs.paper-icon-theme;
       name = "Paper";
-      size = 38;
+      size = 48;
     };
   };
   nixpkgs.config.allowUnfree = true;
@@ -145,8 +145,6 @@
     pavucontrol
     ponymix
     unzip
-    fzf
-    fzy
     arandr
     autorandr
     bat
@@ -193,11 +191,21 @@
     nodePackages.speed-test
     nodePackages.pnpm
     fzf
+    fzy
     chromium
     brave
     hugo
     cht-sh
     keepass
+    dmenu
+    swaylock
+    swayidle
+    wl-clipboard
+    mako
+    alacritty
+    dmenu
+    gimp
+    das_watchdog
 
     # NUR
     nur.repos.afreakk.mongosh
@@ -214,6 +222,11 @@
     # cargo
     # sumneko-lua-language-server
   ];
+
+  wayland.windowManager.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+  };
 
   programs.java.enable = true;
 

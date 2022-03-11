@@ -25,7 +25,7 @@
           curl -s 'https://libretranslate.de/translate' \
                  -H 'Content-Type: application/json' \
                  -d "{\"q\":\"$argv[1..-3]\",\"source\":\"$argv[-2]\",\"target\":\"$argv[-1]\"}" \
-                 | jq .translatedText
+                 | jq -r .translatedText
       '';
     };
     shellAliases = {
@@ -101,7 +101,7 @@
       mi = "nvim -u ~/.config/nvim/minimal-init.lua";
       #  mi = ";nvim -c "colorscheme monarized""
       revi = "bash ~/scripts/install-last-neovim.sh";
-      rc = "nvim ~/.config/nvim/init.*";
+      rc = "nvim ~/.config/nvim/nix.init.*";
       gorc = "cd ~/.config/nvim/";
 
       #### Docker ####
@@ -264,7 +264,7 @@
 
       gg = "git gui citool";
       gga = "git gui citool --amend";
-      ggpull = "git pull origin (git_current_branch)";
+      ggpull = "git pull origin (current_branch)";
 
       ggpush = "git push origin (current_branch)";
       gpsup = "git push --set-upstream origin (current_branch)";
