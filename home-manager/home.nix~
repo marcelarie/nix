@@ -95,23 +95,28 @@
   # };
 
   home.packages = with pkgs;  [
-    tcpdump
+    # tcpdump
     # plocate
+    termite
     alacritty
     rustup
-    # pkg-config
+    pkg-config
     zoxide
     starship
     exa
     neofetch
-    # sxhkd
-    # haskellPackages.greenclip
+    volumeicon
+    sxhkd
+    haskellPackages.greenclip
     feh
     skim
-    # ponymix
-    # unzip
+    pavucontrol
+    ponymix
+    unzip
     fzf
     fzy
+    arandr
+    autorandr
     bat
     ripgrep
     lua
