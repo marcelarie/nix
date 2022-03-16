@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
 
+let
+  username = "m.manzanares";
+  homeDir = "/Users/m.manzanares";
+in
 {
   imports = [
     ./programs/kitty.nix
@@ -13,8 +17,8 @@
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "m.manzanares";
-  # home.homeDirectory = "/Users/m.manzanares";
+  home.username = username;
+  # home.homeDirectory = homeDir;
 
   nixpkgs.config.allowUnfree = true;
 
@@ -23,7 +27,7 @@
     # package = pkgs.neovim-nightly;
     viAlias = true;
     withPython3 = true;
-    extraConfig = ''luafile /home/marcel/.config/nvim/nix.init.lua'';
+    extraConfig = ''luafile ${homeDir}/.config/nvim/nix.init.lua'';
 
     extraPackages = with pkgs; [
       tree-sitter
@@ -95,11 +99,10 @@
   # };
 
   home.packages = with pkgs;  [
-    tcpdump
     # plocate
     alacritty
     rustup
-    # pkg-config
+    pkg-config
     zoxide
     starship
     exa
@@ -121,7 +124,7 @@
     sad
     gh
     python3
-    nodejs
+    nodejs-12_x
     # flameshot
     nixpkgs-fmt
     # slack
@@ -142,7 +145,7 @@
     tridactyl-native
     jq
     # signal-desktop
-    yarn
+    (yarn.override { nodejs = nodejs-12_x; })
     htop
     mongodb
     mongodb-tools
@@ -153,6 +156,8 @@
     # brave
     hugo
     cht-sh
+    clang
+    tree-sitter
     # keepass
 
     # NUR

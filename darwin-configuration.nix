@@ -1,9 +1,8 @@
 { config, pkgs, ... }:
 
-  # Use a custom configuration.nix location.
-  # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
-  # environment.darwinConfig = "$HOME/.config/nixpkgs/darwin/configuration.nix";
-
+# Use a custom configuration.nix location.
+# $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
+# environment.darwinConfig = "$HOME/.config/nixpkgs/darwin/configuration.nix";
 
 {
   imports = [ <home-manager/nix-darwin> ];
@@ -17,16 +16,20 @@
   };
   services.nix-daemon.enable = true;
 
+  nix.registry."node".to = {
+    type = "github";
+    owner = "andyrichardson";
+    repo = "nix-node";
+  };
+
+  nix.binaryCaches = [ "https://cache.nixos.org/" "https://nix-node.cachix.org/" ];
+
   environment.systemPackages = with pkgs;
     [
-        kitty
-        tree-sitter
-        gh
-        fzf
-        ripgrep
-        delta
-        fd
-        sad
+      kitty
+      gcc
+      cmake
+      bind
     ];
 
   fonts.fonts = with pkgs; [
@@ -36,15 +39,20 @@
     liberation_ttf
     fira-code
     fira-code-symbols
-    # nerdfonts
+    nerdfonts
   ];
+
+  environment.variables = {
+    SYS_THEME = "dark";
+    VI_CONFIG = "~/.config/nvim/init.vim";
+  };
 
   home-manager = {
     useUserPackages = true;
-    users."m.manzanares" = (import ./home-manager/home.nix );
+    users."m.manzanares" = (import ./home-manager/home.nix);
   };
 
-  programs.zsh.enable = true;  # default shell on catalina
+  programs.zsh.enable = true; # default shell on catalina
   programs.fish.enable = true;
 
   system.stateVersion = 4;

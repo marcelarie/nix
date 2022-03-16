@@ -121,7 +121,7 @@ bind -M insert \ce end-of-line # on vi-mode
 #    STARTUP     #
 # ≃≃≃≃≃≃≃≃≃≃≃≃≃≃ ⩨
 
-xset r rate 150 45
+# xset r rate 150 45
 set fish_greeting
 ~/clones/forks/fetch-master-6000/fm6000.pl
 

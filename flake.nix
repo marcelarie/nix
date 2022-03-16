@@ -15,7 +15,7 @@
   };
 
   outputs = { self, nixpkgs, darwin, home-manager, neovim-nightly-overlay }:
-  let
+    let
       username = "m.manzanares";
       pkgs = import nixpkgs {
         # inherit system;
@@ -25,47 +25,52 @@
           # nur.overlay
         ];
       };
-    configuration = { pkgs, ... }: {
-      nix.package = pkgs.nixFlakes;
-      services.nix-daemon.enable = true;
-    };
-  in
-  {
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake ./modules/examples#simple \
-    #       --override-input darwin .
+      configuration = { pkgs, ... }: {
+        nix.package = pkgs.nixFlakes;
+        services.nix-daemon.enable = true;
+      };
+    in
+    {
+      # Build darwin flake using:
+      # $ darwin-rebuild build --flake ./modules/examples#simple \
+      #       --override-input darwin .
 
-    darwinConfigurations."marcel" = darwin.lib.darwinSystem {
-      modules = [ ~/.nixpkgs/darwin-configuration.nix ];
-      system = "x86_64-darwin";
-    };
+      darwinConfigurations."bcn-marcel-marnzanares" = darwin.lib.darwinSystem {
+        modules = [
+          ./darwin-configuration.nix
+        ];
+        system = "x86_64-darwin";
+      };
 
-    # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."marcel".pkgs;
+      # Expose the package set, including overlays, for convenience.
+      darwinPackages = self.darwinConfigurations."bcn-marcel-marnzanares".pkgs;
 
-     # homeConfigurations = {
-     #   ${username} = home-manager.lib.homeManagerConfiguration {
-     #     inherit pkgs username;
-     #     # stateVersion = "21.05";
-     #     homeDirectory = "/Users/${username}";
-     #     system = "x86_64-darwin";
-     #     useUserPackages = true;
-     #     configuration = {
-     #       imports = [
-     #         ./home-manager/home.nix
-     #       ];
-     #     };
-     #   };
-     # };
-
-      # nixosConfigurations = {
-      #   nixos = nixpkgs.lib.nixosSystem {
-      #     inherit system pkgs;
-      #     modules = [
-      #       # ({ config, pkgs, ... }: { nixpkgs.overlays = [ leftwm.overlay ]; })
-      #       ./configuration.nix
-      #     ];
+      # homeConfigurations = {
+      #   ${username} = home-manager.lib.homeManagerConfiguration {
+      #     inherit pkgs username;
+      #     stateVersion = "21.05";
+      #     homeDirectory = "/Users/${username}";
+      #     system = "x86_64-darwin";
+      #     useUserPackages = true;
+      #     configuration = {
+      #       imports = [
+      #         ./home-manager/home.nix
+      #       ];
+      #     };
       #   };
       # };
+      #
+      # homeManagerCommonConfig = with self.homeManagerModules; {
+      #     inherit pkgs username;
+      #   imports = [
+      #     ./home-manager/home.nix
+      #   ];
+      # };
+
+      homeManagerModules = {
+        inherit overlays;
+        pkgs.overlays = overlays;
+      };
+
     };
 }
