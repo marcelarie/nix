@@ -16,13 +16,6 @@
   home.username = "marcel";
   home.homeDirectory = "/home/marcel";
 
-  xsession = {
-    pointerCursor = {
-      package = pkgs.paper-icon-theme;
-      name = "Paper";
-      size = 30;
-    };
-  };
   nixpkgs.config.allowUnfree = true;
 
   programs.neovim = {
@@ -94,6 +87,11 @@
     theme = {
       name = "Materia-dark";
       package = pkgs.materia-theme;
+    };
+    cursorTheme = {
+      package = pkgs.paper-icon-theme;
+      name = "Paper";
+      size = 30;
     };
     iconTheme = {
       name = "Paper";
