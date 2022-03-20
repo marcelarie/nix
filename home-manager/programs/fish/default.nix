@@ -144,6 +144,7 @@
       # klay  =  "setxkbmap (printf \" es\nus\nus (dvorak)\nes (dvorak)\n " | fzy)";
       af = "xdotool type --delay 0 ( alias | fzy | awk -F' ' '{print $2}')";
       chs = "cht.sh";
+      fm = "~/clones/forks/fetch-master-6000/fm6000.pl";
 
       #### Tmux ####
       #  t = "tmux attach || tmux new-session" # Attaches tmux to the last session; creates a new session if none exists.

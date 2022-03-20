@@ -16,13 +16,6 @@
   home.username = "marcel";
   home.homeDirectory = "/home/marcel";
 
-  xsession = {
-    pointerCursor = {
-      package = pkgs.paper-icon-theme;
-      name = "Paper";
-      size = 48;
-    };
-  };
   nixpkgs.config.allowUnfree = true;
 
   programs.neovim = {
@@ -85,7 +78,7 @@
       options = {
         navigate = true;
         line-numbers = true;
-        syntax-theme = "calochortus-lyallii";
+        # syntax-theme = "calochortus-lyallii";
       };
     };
   };
@@ -99,6 +92,11 @@
     iconTheme = {
       name = "Paper";
       package = pkgs.paper-icon-theme;
+    };
+    cursorTheme = {
+      package = pkgs.paper-icon-theme;
+      name = "Paper";
+      size = 48;
     };
     font = {
       name = "Noto Sans 9.5";
@@ -127,7 +125,6 @@
   home.packages = with pkgs;  [
     tcpdump
     firefox
-    plocate
     termite
     alacritty
     rustup
@@ -207,6 +204,12 @@
     dmenu
     gimp
     das_watchdog
+    acpi
+    lf
+    xorg.xev
+    qbittorrent
+    auto-cpufreq
+    cbatticon
 
     # NUR
     nur.repos.afreakk.mongosh
@@ -223,11 +226,6 @@
     # cargo
     # sumneko-lua-language-server
   ];
-
-  wayland.windowManager.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-  };
 
   programs.java.enable = true;
 

@@ -24,14 +24,16 @@ in
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.consoleMode = "max";
   boot.loader.efi.canTouchEfiVariables = true;
 
   # boot.kernelPackages = pkgs.linuxPackages_5_16;
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.kernelParams = [ "quiet" "button.lid_init_state=open" "vt.global_cursor_default=0" ];
 
   systemd.services.systemd-udev-settle.enable = false;
-  systemd.services.NetworkManager-wait-online.enable = false;
+  # systemd.services.NetworkManager-wait-online.enable = false;
 
   networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
@@ -43,13 +45,15 @@ in
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking.useDHCP = false;
-  networking.interfaces.enp2s0f0.useDHCP = true;
-  networking.interfaces.enp5s0.useDHCP = true;
+  # networking.interfaces.enp2s0f0.useDHCP = true;
+  # networking.interfaces.enp5s0.useDHCP = true;
 
   environment.variables = {
     SYS_THEME = "dark";
-    VI_CONFIG = "~/.config/nvim/init.vim";
+    VI_CONFIG = "~/.config/nvim/nix.init.lua";
     GDK_SCALE = "2";
+    GDK_DPI_SCALE = "2";
+    EDITOR = "nvim";
   };
 
   # Configure network proxy if necessary
@@ -59,7 +63,9 @@ in
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
-    font = "Lat2-Terminus45";
+    earlySetup = true;
+    font = "${pkgs.terminus_font}/share/consolefonts/ter-132n.psf.gz";
+    packages = with pkgs; [ terminus_font ];
     keyMap = "us";
   };
 
@@ -107,6 +113,7 @@ in
   # Bluetooth
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
+  services.illum.enable = true;
 
   # Remove sound.enable or turn it off if you had it set previously, it seems to cause conflicts with pipewire
   sound.enable = true;
@@ -116,13 +123,30 @@ in
     package = pkgs.pulseaudioFull;
   };
 
+  # Remove sound.enable or turn it off if you had it set previously, it seems to cause conflicts with pipewire
+  #sound.enable = false;
+
+  # rtkit is optional but recommended
+  # security.rtkit.enable = true;
+  # services.pipewire = {
+  #   enable = true;
+  #   alsa.enable = true;
+  #   alsa.support32Bit = true;
+  #   pulse.enable = true;
+  #   # If you want to use JACK applications, uncomment this
+  #   #jack.enable = true;
+  #
+  #   # use the example session manager (no others are packaged yet so this is enabled by default,
+  #   # no need to redefine it in your config for now)
+  #   #media-session.enable = true;
+  # };
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.marcel = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" "plocate" ]; # Enable ‘sudo’ for the user.
   };
 
   users.extraGroups.networkmanager.members = [ "root" ];
@@ -147,6 +171,7 @@ in
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   programs.nm-applet.enable = true;
+
   # programs.gnupg.agent = {
   #   enable = true;
   #   enableSSHSupport = true;
@@ -162,10 +187,33 @@ in
     mplus-outline-fonts
     dina-font
     proggyfonts
+    gohufont
     nerdfonts
   ];
 
+  services.locate = with pkgs; {
+    enable = true;
+    locate = plocate;
+    interval = "hourly";
+    localuser = null;
+  };
+
   networking.extraHosts = '' '';
+
+  services.logind.lidSwitch = "suspend";
+
+  services.tlp = {
+    enable = true;
+  };
+
+  # boot.loader.grub = {
+  #   extraConfig = ''
+  #     GRUB_CMDLINE_LINUX="amdgpu.backlight=0"
+  #     GRUB_GFXMODE=640x480
+  #     GRUB_GFXPAYLOAD_LINUX="keep"
+  #     GRUB_TERMINAL_OUTPUT="gfxterm"
+  #   '';
+  # };
 
   # List services that you want to enable:
 
