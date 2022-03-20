@@ -56,7 +56,7 @@
       perlPackages.PLS
       sqlite
 
-      # nur.repos.crazazy.efm-langserver
+      nur.repos.crazazy.efm-langserver
     ];
   };
 
