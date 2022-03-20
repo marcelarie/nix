@@ -84,7 +84,11 @@
     enable = true;
     desktopManager = {
       xterm.enable = true;
-      xfce.enable = true;
+      xfce = {
+        enable = true;
+        noDesktop = true;
+        enableXfwm = false;
+      };
     };
     dpi = 190;
     # dpi = 110; # this is better for the dell 27i 4k screen
@@ -150,7 +154,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.marcel = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" ];
+    extraGroups = [ "wheel" "docker" "plocate" ];
   };
 
   users.extraGroups.networkmanager.members = [ "root" ];

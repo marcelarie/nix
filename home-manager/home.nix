@@ -20,7 +20,7 @@
     pointerCursor = {
       package = pkgs.paper-icon-theme;
       name = "Paper";
-      size = 38;
+      size = 30;
     };
   };
   nixpkgs.config.allowUnfree = true;
@@ -198,6 +198,7 @@
     hugo
     cht-sh
     keepass
+    qbittorrent
 
     # NUR
     nur.repos.afreakk.mongosh
