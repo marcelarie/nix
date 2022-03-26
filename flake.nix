@@ -6,15 +6,15 @@
 
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    # nur.url = github:nix-community/NUR;
+    nur.url = github:nix-community/NUR;
 
-    darwin.url = "github:lnl7/nix-darwin";
+    darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs = { self, nixpkgs, darwin, home-manager, neovim-nightly-overlay }:
+  outputs = { self, nixpkgs, darwin, nur, home-manager, neovim-nightly-overlay }:
     let
       username = "m.manzanares";
       pkgs = import nixpkgs {
@@ -22,7 +22,7 @@
         # config = { allowUnfree = true; };
         overlays = [
           neovim-nightly-overlay.overlay
-          # nur.overlay
+          nur.overlay
         ];
       };
       configuration = { pkgs, ... }: {
@@ -36,6 +36,7 @@
       #       --override-input darwin .
 
       darwinConfigurations."bcn-marcel-marnzanares" = darwin.lib.darwinSystem {
+        inherit pkgs;
         modules = [
           ./darwin-configuration.nix
         ];
@@ -44,33 +45,5 @@
 
       # Expose the package set, including overlays, for convenience.
       darwinPackages = self.darwinConfigurations."bcn-marcel-marnzanares".pkgs;
-
-      # homeConfigurations = {
-      #   ${username} = home-manager.lib.homeManagerConfiguration {
-      #     inherit pkgs username;
-      #     stateVersion = "21.05";
-      #     homeDirectory = "/Users/${username}";
-      #     system = "x86_64-darwin";
-      #     useUserPackages = true;
-      #     configuration = {
-      #       imports = [
-      #         ./home-manager/home.nix
-      #       ];
-      #     };
-      #   };
-      # };
-      #
-      # homeManagerCommonConfig = with self.homeManagerModules; {
-      #     inherit pkgs username;
-      #   imports = [
-      #     ./home-manager/home.nix
-      #   ];
-      # };
-
-      homeManagerModules = {
-        inherit overlays;
-        pkgs.overlays = overlays;
-      };
-
     };
 }

@@ -1,7 +1,7 @@
 { pkgs, config, lib, ... }:
 
 let
-  nixConfig = ".nixpkgs";
+  nixConfig = "~/.nixpkgs";
   home = "/Users/m.manzanares/";
 in
 {
@@ -18,9 +18,10 @@ in
       gitignore = "curl -sL https://www.gitignore.io/api/$argv";
       goo = "xdg-open \"https://www.google.com/search?q=$argv\" ";
       curent_branch = "git symbolic-ref --short HEAD";
+      nfs = "cd ${nixConfig}; sudo darwin-rebuild switch --flake .# $argv; cd -";
+      nsp = "nix-shell -p $argv";
       # hms = "cd ~/.config/nixos/; git add --all; home-manager switch --flake . $argv; cd -";
       # hmb = "cd ~/.config/nixos/; git add --all; home-manager build --flake . $argv; cd -";
-      nfs = "cd ~/${nixConfig}/; sudo darwin-rebuild switch --flake .# $argv; cd -";
       trs = ''
         if test -z "$argv"
               curl -s -X GET "https://libretranslate.com/languages" \
@@ -93,8 +94,8 @@ in
       zrc = "nvim ~/.zshrc";
       arc = "nvim ~/.config/alacritty/alacritty.yml";
       drc = "cd ~/.config/arco-dwm & nvim config.h";
-      frc = "nvim ~/${nixConfig}/home-manager/programs/fish/default.nix";
-      krc = "nvim ~/${nixConfig}/home-manager/programs/kitty.nix";
+      frc = "nvim ${nixConfig}/home-manager/programs/fish/default.nix";
+      krc = "nvim ${nixConfig}/home-manager/programs/kitty.nix";
       brc = "nvim ~/.bashrc";
       lrc = "cd ~/.config/leftwm & nvim config.toml";
       clones = "~/clones";
@@ -106,7 +107,7 @@ in
       mi = "nvim -u ~/.config/nvim/minimal-init.lua";
       #  mi = ";nvim -c "colorscheme monarized""
       revi = "bash ~/scripts/install-last-neovim.sh";
-      rc = "nvim ~/.config/nvim/init.*";
+      rc = "nvim ~/.config/nvim/nix.init.*";
       gorc = "cd ~/.config/nvim/";
 
       #### Docker ####
@@ -145,7 +146,7 @@ in
       learn = "zyc /home/marcel/clones/learning";
       fork = "zyc /home/marcel/clones/forks";
       work = "zyc /home/marcel/clones/work";
-      locate = "plocate";
+      # locate = "plocate";
       # klay  =  "setxkbmap (printf \" es\nus\nus (dvorak)\nes (dvorak)\n " | fzy)";
       af = "xdotool type --delay 0 ( alias | fzy | awk -F' ' '{print $2}')";
       chs = "cht.sh";
@@ -172,14 +173,12 @@ in
 
       ### NixOS ###
       ns = "nix-shell";
-      # nfs = "cd ~/${nixConfig}/; sudo darwin-rebuild switch --flake .#; cd -";
-      nrc = "nvim ~/${nixConfig}/darwin-configuration.nix";
-      nfrc = "nvim ~/${nixConfig}/flake.nix";
-      # nfs = "sudo darwin-rebuild switch -I darwin-config=/Users/m.manzanares/.${nixConfig}/darwin-configuration.nix";
-      # nfs = "sudo nixos-rebuild switch --flake ~/.config/nixos#";
-      # nfu = "nix flake update ~/.config//";
+      nrc = "nvim ${nixConfig}/darwin-configuration.nix";
+      nfrc = "nvim ${nixConfig}/flake.nix";
+      nfu = "nix flake update ${nixConfig}";
+
       #-> ### Home Manager  ###
-      hrc = "nvim ~/${nixConfig}/home-manager/home.nix";
+      hrc = "nvim ${nixConfig}/home-manager/home.nix";
       # hms = "cd ~/.config/nixos/; home-manager switch --flake .";
       # hmsb = "cd ~/.config/nixos/; home-manager build --flake .";
 

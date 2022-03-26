@@ -6,11 +6,11 @@ with lib;
     {
       enable = true;
       font = {
-        package = pkgs.fira-code;
-        name = "FiraCode";
+        # package = pkgs.fira-code;
+        name = "FiraCode Nerd Font";
       };
       settings = {
-        font_size = "12.0";
+        font_size = "14.0";
         cursor_shape = "underline"; # (block, beam, underline)
         cursor_beam_thickness = "0.5";
         cursor_underline_thickness = "0.5";
@@ -74,6 +74,6 @@ with lib;
         "kitty_mod+l" = "kitten hints --type path --program - ";
       };
 
-      # extraConfig = "";
+      extraConfig = "";
     };
 }

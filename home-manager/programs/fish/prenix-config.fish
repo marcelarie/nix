@@ -123,10 +123,12 @@ bind -M insert \ce end-of-line # on vi-mode
 
 # xset r rate 150 45
 set fish_greeting
-~/clones/forks/fetch-master-6000/fm6000.pl
+# ~/clones/forks/fetch-master-6000/fm6000.pl
 
 # /home/marcel/clones/own/git-tellme/target/release/git-tellme
 # fm6000
+
+fish_vi_key_bindings
 
 # Generated for envman. Do not edit.
 # test -s "$HOME/.config/envman/load.fish"; and source "$HOME/.config/envman/load.fish"

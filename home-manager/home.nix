@@ -3,12 +3,14 @@
 let
   username = "m.manzanares";
   homeDir = "/Users/m.manzanares";
+  customNodePackages = pkgs.callPackage ~/.nixpkgs/home-manager/programs/npm-packages { };
 in
 {
   imports = [
     ./programs/kitty.nix
     ./programs/fish
     ./programs/vim
+    # ./programs/bash
   ];
 
   # Let Home Manager install and manage itself.
@@ -24,34 +26,34 @@ in
 
   programs.neovim = {
     enable = true;
-    # package = pkgs.neovim-nightly;
+    package = pkgs.neovim-nightly;
     viAlias = true;
     withPython3 = true;
     extraConfig = ''luafile ${homeDir}/.config/nvim/nix.init.lua'';
 
     extraPackages = with pkgs; [
-      tree-sitter
-      pkgs.rnix-lsp
-      nodePackages.typescript
-      nodePackages.typescript-language-server
-      nodePackages.bash-language-server
-      nodePackages.vscode-langservers-extracted
-      nodePackages.vim-language-server
-      nodePackages.typescript
-      nodePackages.typescript-language-server
-      nodePackages.intelephense
-      nodePackages.dockerfile-language-server-nodejs
-      nodePackages.yaml-language-server
-      sumneko-lua-language-server
-      texlab
-      rust-analyzer
       deno
+      texlab
       stylua
-      nodePackages.prettier
+      sqlite
+      tree-sitter
+      rust-analyzer
+      sumneko-lua-language-server
+      pkgs.rnix-lsp
+
+      perlPackages.PLS
       perl534Packages.PerlTidy
       perl534Packages.PerlCritic
-      perlPackages.PLS
-      sqlite
+      nodePackages.prettier
+
+      nodePackages.typescript
+      nodePackages.intelephense
+      nodePackages.vim-language-server
+      nodePackages.bash-language-server
+      nodePackages.yaml-language-server
+      nodePackages.typescript-language-server
+      nodePackages.vscode-langservers-extracted
+      nodePackages.dockerfile-language-server-nodejs
 
       # nur.repos.crazazy.efm-langserver
     ];
@@ -124,7 +126,7 @@ in
     sad
     gh
     python3
-    nodejs-12_x
+    nodejs-17_x
     # flameshot
     nixpkgs-fmt
     # slack
@@ -145,23 +147,31 @@ in
     tridactyl-native
     jq
     # signal-desktop
-    (yarn.override { nodejs = nodejs-12_x; })
+    (yarn.override { nodejs = null; })
     htop
     mongodb
     mongodb-tools
     nodePackages.speed-test
     nodePackages.pnpm
     fzf
+    lf
+    cowsay
     # chromium
     # brave
     hugo
     cht-sh
-    clang
+    # clang
     tree-sitter
+    manix # nix docs on the cli
+    nodePackages.node2nix
+    go
     # keepass
 
     # NUR
     # nur.repos.afreakk.mongosh
+
+    # NODE PACKAGES
+    # customNodePackages.cssmodules-language-server
 
     # polybar
     # chromium
@@ -177,7 +187,9 @@ in
     # sumneko-lua-language-server
   ];
 
-  # programs.java.enable = true;
+  programs.java.enable = true;
+
+  # NODE PACKAGES
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

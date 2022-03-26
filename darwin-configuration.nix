@@ -26,21 +26,20 @@
 
   environment.systemPackages = with pkgs;
     [
-      kitty
       gcc
       cmake
       bind
     ];
 
-  fonts.fonts = with pkgs; [
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    liberation_ttf
-    fira-code
-    fira-code-symbols
-    nerdfonts
-  ];
+  # fonts.fonts = with pkgs; [
+  #   noto-fonts
+  #   noto-fonts-cjk
+  #   noto-fonts-emoji
+  #   liberation_ttf
+  #   fira-code
+  #   fira-code-symbols
+  #   nerdfonts
+  # ];
 
   environment.variables = {
     SYS_THEME = "dark";
@@ -49,10 +48,13 @@
 
   home-manager = {
     useUserPackages = true;
-    users."m.manzanares" = (import ./home-manager/home.nix);
+    users."m.manzanares" = {
+      nixpkgs.overlays = pkgs.overlays;
+      imports = [ ./home-manager/home.nix ];
+    };
   };
 
-  programs.zsh.enable = true; # default shell on catalina
+  # programs.zsh.enable = true; # default shell on catalina
   programs.fish.enable = true;
 
   system.stateVersion = 4;
