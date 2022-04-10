@@ -72,6 +72,8 @@ with lib;
 
       keybindings = {
         "kitty_mod+l" = "kitten hints --type path --program - ";
+        "kitty_mod+enter" = "new_os_window_with_cwd";
+
       };
 
       extraConfig = "";

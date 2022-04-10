@@ -7,9 +7,10 @@ let
 in
 {
   imports = [
-    ./programs/kitty.nix
-    ./programs/fish
     ./programs/vim
+    ./programs/fish
+    ./programs/kitty.nix
+    # ./programs/spacebar.nix
     # ./programs/bash
   ];
 
@@ -54,8 +55,6 @@ in
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
       nodePackages.dockerfile-language-server-nodejs
-
-      # nur.repos.crazazy.efm-langserver
     ];
   };
 
@@ -126,7 +125,7 @@ in
     sad
     gh
     python3
-    nodejs-17_x
+    nodejs-12_x
     # flameshot
     nixpkgs-fmt
     # slack
@@ -160,12 +159,25 @@ in
     # brave
     hugo
     cht-sh
-    # clang
+    clang
     tree-sitter
     manix # nix docs on the cli
     nodePackages.node2nix
     go
+    helix
     # keepass
+    skhd
+    # yabai
+    # python39Packages.selenium
+    # python39Packages.requests
+    # maven
+    # ffmpeg
+    # gifsicle
+    # docker
+    # podman
+    # docker-compose
+    # docker-machine
+    # podman-compose
 
     # NUR
     # nur.repos.afreakk.mongosh
@@ -173,6 +185,7 @@ in
     # NODE PACKAGES
     # customNodePackages.cssmodules-language-server
 
+    # selenium-server-standalone
     # polybar
     # chromium
     # leftwm

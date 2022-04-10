@@ -17,7 +17,7 @@ in
       '';
       gitignore = "curl -sL https://www.gitignore.io/api/$argv";
       goo = "xdg-open \"https://www.google.com/search?q=$argv\" ";
-      curent_branch = "git symbolic-ref --short HEAD";
+      current_branch = "git symbolic-ref --short HEAD";
       nfs = "cd ${nixConfig}; sudo darwin-rebuild switch --flake .# $argv; cd -";
       nsp = "nix-shell -p $argv";
       # hms = "cd ~/.config/nixos/; git add --all; home-manager switch --flake . $argv; cd -";

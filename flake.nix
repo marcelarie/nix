@@ -10,19 +10,28 @@
 
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
+    # spacebar.url = "github:cmacrae/spacebar/v1.4.0";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs = { self, nixpkgs, darwin, nur, home-manager, neovim-nightly-overlay }:
+  outputs =
+    { self
+    , nur
+    , nixpkgs
+    , darwin
+    , home-manager
+      # , spacebar
+    , neovim-nightly-overlay
+    }:
     let
       username = "m.manzanares";
       pkgs = import nixpkgs {
         # inherit system;
         # config = { allowUnfree = true; };
         overlays = [
-          neovim-nightly-overlay.overlay
           nur.overlay
+          neovim-nightly-overlay.overlay
         ];
       };
       configuration = { pkgs, ... }: {
@@ -35,15 +44,15 @@
       # $ darwin-rebuild build --flake ./modules/examples#simple \
       #       --override-input darwin .
 
-      darwinConfigurations."bcn-marcel-marnzanares" = darwin.lib.darwinSystem {
+      darwinConfigurations."bcn-marcel-manzanares" = darwin.lib.darwinSystem {
         inherit pkgs;
+        system = "x86_64-darwin";
         modules = [
           ./darwin-configuration.nix
         ];
-        system = "x86_64-darwin";
       };
 
       # Expose the package set, including overlays, for convenience.
-      darwinPackages = self.darwinConfigurations."bcn-marcel-marnzanares".pkgs;
+      darwinPackages = self.darwinConfigurations."bcn-marcel-manzanares".pkgs;
     };
 }
