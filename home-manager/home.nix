@@ -5,6 +5,7 @@
     ./programs/kitty.nix
     ./programs/fish
     ./programs/vim
+    ./programs/shell-aliases.nix
   ];
 
   # Let Home Manager install and manage itself.
@@ -213,6 +214,11 @@
     xfce.thunar
     manix
     cowsay
+    autoconf
+    libtool
+    zlib
+    automake
+    gifsicle
 
     # NUR
     nur.repos.afreakk.mongosh
