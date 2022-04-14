@@ -1,0 +1,117 @@
+#
+# ~/.bashrc
+#
+
+if test -e /etc/static/bashrc; then . /etc/static/bashrc; fi
+
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+export HISTCONTROL=ignoreboth:erasedups
+
+export EDITOR='vim'
+export VISUAL='vim'
+
+if [ -d "$HOME/.bin" ] ;
+  then PATH="$HOME/.bin:$PATH"
+fi
+
+if [ -d "$HOME/.local/bin" ] ;
+  then PATH="$HOME/.local/bin:$PATH"
+fi
+
+#ignore upper and lowercase when TAB completion
+bind "set completion-ignore-case on"
+
+#list
+alias ls='exa --color=auto'
+alias la='ls -a'
+alias ll='ls -la'
+alias l='ls'
+alias l.="ls -A | egrep '^\.'"
+
+#fix obvious typo's
+alias cd..='cd ..'
+
+#search content with ripgrep
+alias rg="rg --sort path"
+
+#get the error messages from journalctl
+alias jctl="journalctl -p 3 -xb"
+
+alias vi="nvim"
+
+# # ex = EXtractor for all kinds of archives
+# # usage: ex <file>
+ex ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1   ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *.deb)       ar x $1      ;;
+      *.tar.xz)    tar xf $1    ;;
+      *.tar.zst)   tar xf $1    ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
+#remove
+alias rmgitcache="rm -r ~/.cache/git"
+
+#moving your personal files and folders from /personal to ~
+alias personal='cp -Rf /personal/* ~'
+
+# personal
+alias vi="nvim"
+
+# FUNCTIONS
+function goo () {
+    search="$@"
+    xdg-open "https://www.google.com/search?q=$search"
+}
+
+ps1 () {
+    current_pwd="$( pwd | sed "s#$HOME#~#" )";
+    branch="$( git symbolic-ref --short HEAD 2>/dev/null )";
+    [[ $( git status -s 2>/dev/null ) ]] && changes="❗" || changes="";
+    PS1=" $current_pwd \e[0;36m$branch$changes\e[m \n > ";
+}
+
+ps1;
+
+cd () {
+    builtin cd "$@";
+    ps1;
+}
+
+#create a file called .bashrc-personal and put all your personal aliases
+#in there. They will not be overwritten by skel.
+[[ -f ~/.bashrc-personal ]] && . ~/.bashrc-personal
+
+eval "$(zoxide init bash)"
+
+z () {
+    __zoxide_z "$@";
+    ps1;
+}
+
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# neofetch

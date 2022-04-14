@@ -21,6 +21,7 @@
               Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
               Plug 'mbbill/undotree'
               Plug 'miyase256/vim-ripgrep', {'branch': 'fix/remove-complete-from-RgRoot'}
+              Plug 'tpope/vim-commentary'
       call plug#end()
 
       "Leader Keybindings:"

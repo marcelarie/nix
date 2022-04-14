@@ -31,7 +31,17 @@
         # config = { allowUnfree = true; };
         overlays = [
           nur.overlay
-          neovim-nightly-overlay.overlay
+          # neovim-nightly-overlay.overlay
+          (import (
+            let
+              # rev = "master";
+              rev = "10e7407aa9e687bad3e167c46d2efd15eef47673";
+            in
+            builtins.fetchTarball {
+              url = "https://github.com/nix-community/neovim-nightly-overlay/archive/${rev}.tar.gz";
+            }
+          )
+          )
         ];
       };
       configuration = { pkgs, ... }: {
