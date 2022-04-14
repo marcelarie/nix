@@ -354,4 +354,5 @@ if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integr
 # END_KITTY_SHELL_INTEGRATION
 
 eval "$(zoxide init bash)"
+eval "$(starship init bash)"
 # export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
