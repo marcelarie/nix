@@ -212,6 +212,7 @@
     powertop
     xfce.thunar
     manix
+    cowsay
 
     # NUR
     nur.repos.afreakk.mongosh

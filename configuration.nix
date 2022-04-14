@@ -136,6 +136,7 @@ in
     openssl
     xdotool
     dmenu
+    cowsay
     sqlite
     xorg.xkill
   ];
