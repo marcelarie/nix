@@ -4,8 +4,8 @@
   imports = [
     ./programs/kitty.nix
     ./programs/fish
+    ./programs/bash
     ./programs/vim
-    ./programs/shell-aliases.nix
   ];
 
   # Let Home Manager install and manage itself.
@@ -219,6 +219,9 @@
     zlib
     automake
     gifsicle
+    openssl
+    pkg-config
+    libiconv
 
     # NUR
     nur.repos.afreakk.mongosh

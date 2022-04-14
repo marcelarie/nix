@@ -54,6 +54,8 @@ in
     GDK_DPI_SCALE = "2";
     EDITOR = "nvim";
     XCURSOR_SIZE = "64";
+    PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
+    OPENSSL_DIR = "${pkgs.openssl}";
   };
 
   # Select internationalisation properties.
