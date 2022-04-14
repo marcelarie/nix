@@ -50,7 +50,7 @@
       sqlite
       fzf
 
-      nur.repos.crazazy.efm-langserver
+      # nur.repos.crazazy.efm-langserver
     ];
   };
 
@@ -118,7 +118,7 @@
 
   programs.rofi = {
     enable = true;
-    font = "FiraCode 20";
+    font = "FiraCode 25";
     theme = ./programs/rofi/themes/slate.rasi;
   };
 
@@ -126,7 +126,7 @@
     tcpdump
     firefox
     termite
-    alacritty
+    # alacritty
     rustup
     polybar
     pkg-config
@@ -200,7 +200,6 @@
     swayidle
     wl-clipboard
     mako
-    alacritty
     dmenu
     gimp
     das_watchdog
@@ -210,6 +209,9 @@
     qbittorrent
     auto-cpufreq
     cbatticon
+    powertop
+    xfce.thunar
+    manix
 
     # NUR
     nur.repos.afreakk.mongosh
@@ -229,14 +231,6 @@
 
   programs.java.enable = true;
 
-  # This value determines the Home Manager release that your
-  # configuration is compatible with. This helps avoid breakage
-  # when a new Home Manager release introduces backwards
-  # incompatible changes.
-  #
-  # You can update Home Manager without changing this value. See
-  # the Home Manager release notes for a list of state version
-  # changes in each release.
   # home.stateVersion = "21.05";
   # home.stateVersion = "20.09";
 }
