@@ -155,7 +155,7 @@
     sad
     gh
     python3
-    nodejs
+    nodejs-12_x
     flameshot
     rofi-power-menu
     webcamoid

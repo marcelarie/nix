@@ -36,10 +36,10 @@
   grsa = "git restore *";
   grss = "git restore --staged";
   grssa = "git restore --staged *";
-  glom = "git pull origin (git branch -rl \"*/HEAD\" | rev | cut -d/ -f1 | rev)";
+  # glom = "git pull origin (git branch -rl \"*/HEAD\" | rev | cut -d/ -f1 | rev)";
   glof = "git log --oneline -M --stat --follow --";
   gstal = "git stash list";
-  grec = "git log --graph --oneline --decorate ( git fsck --no-reflog | awk \";/dangling commit/ {print $3}\" )";
+  # grec = "git log --graph --oneline --decorate ( git fsck --no-reflog | awk \";/dangling commit/ {print $3}\" )";
   gstapp = "git stash apply";
   gw = "git worktree";
   gwa = "git worktree add";
@@ -52,6 +52,8 @@
   yu = "yarn update";
   yi = "yarn install";
   ya = "yarn add";
+  yb = "yarn build";
+  ybd = "yarn build:dev";
   yig = "yarn install -g";
 
   #### Configs ####
@@ -75,7 +77,7 @@
   gorc = "cd ~/.config/nvim/";
 
   #### Docker ####
-  do = "docker";
+  # do = "\docker";
   dor = "docker run";
   dob = "docker build";
   dos = "docker stop";
@@ -224,6 +226,7 @@
   gcs = "git commit -S";
 
   gd = "git diff";
+  gds = "git diff --staged";
   gdca = "git diff --cached";
   gdct = "git describe --tags `git rev-list --tags --max-count 1`";
   gdt = "git diff-tree --no-commit-id --name-only -r";

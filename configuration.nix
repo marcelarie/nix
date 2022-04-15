@@ -55,7 +55,7 @@ in
     EDITOR = "nvim";
     XCURSOR_SIZE = "64";
     PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
-    OPENSSL_DIR = "${pkgs.openssl}";
+    OPENSSL_DIR = "${pkgs.openssl.dev}";
   };
 
   # Select internationalisation properties.
