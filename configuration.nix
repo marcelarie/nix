@@ -141,6 +141,7 @@ in
     cowsay
     sqlite
     xorg.xkill
+    direnv
   ];
 
   programs.nm-applet.enable = true;
@@ -169,6 +170,7 @@ in
   networking.extraHosts = '' '';
 
   services.logind.lidSwitch = "suspend";
+  services.lorri.enable = true;
 
   services.tlp = {
     enable = true;

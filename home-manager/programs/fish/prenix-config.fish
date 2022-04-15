@@ -130,4 +130,6 @@ set fish_greeting
 
 # Generated for envman. Do not edit.
 # test -s "$HOME/.config/envman/load.fish"; and source "$HOME/.config/envman/load.fish"
+
 starship init fish | source
+direnv hook fish | source
