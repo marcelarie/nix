@@ -182,7 +182,7 @@
     jq
     mesa.drivers
     signal-desktop
-    yarn
+    (yarn.override { nodejs = null; })
     update-systemd-resolved
     htop
     mongodb
@@ -216,12 +216,8 @@
     cowsay
     autoconf
     libtool
-    zlib
     automake
-    gifsicle
-    openssl
-    pkg-config
-    libiconv
+    node2nix
 
     # NUR
     nur.repos.afreakk.mongosh
