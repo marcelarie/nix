@@ -1,11 +1,12 @@
-{ pkgs, config, ... }:
-
 {
-
+  pkgs,
+  config,
+  ...
+}: {
   config.programs.vim = {
     enable = true;
     # plugins = with pkgs.vimPlugins; [ vim-monokai-pro oceanic-next fzf-vim undotree ];
-    settings = { ignorecase = true; };
+    settings = {ignorecase = true;};
     extraConfig = ''
       set mouse=a
       let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'

@@ -1,19 +1,18 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   dpi = 250;
   fr_dpi = "2.50";
-in
-{
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+in {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   nix = {
     package = pkgs.nixUnstable;
@@ -31,8 +30,8 @@ in
 
   # boot.kernelPackages = pkgs.linuxPackages_5_16;
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.initrd.kernelModules = [ "amdgpu" ];
-  boot.kernelParams = [ "quiet" "button.lid_init_state=open" "vt.global_cursor_default=0" ];
+  boot.initrd.kernelModules = ["amdgpu"];
+  boot.kernelParams = ["quiet" "button.lid_init_state=open" "vt.global_cursor_default=0"];
 
   systemd.services.systemd-udev-settle.enable = false;
   # systemd.services.NetworkManager-wait-online.enable = false;
@@ -63,13 +62,13 @@ in
   console = {
     earlySetup = true;
     font = "${pkgs.terminus_font}/share/consolefonts/ter-132n.psf.gz";
-    packages = with pkgs; [ terminus_font ];
+    packages = with pkgs; [terminus_font];
     keyMap = "us";
   };
 
   services.xserver = {
     enable = true;
-    videoDrivers = [ "amdgpu" ];
+    videoDrivers = ["amdgpu"];
     desktopManager = {
       xterm.enable = true;
       # xfce.enable = true;
@@ -85,8 +84,8 @@ in
       };
       sessionCommands = ''
          ${pkgs.xorg.xrdb}/bin/xrdb -merge <<EOF
-          Xft.dpi: ${builtins.toString(dpi)}
-          *.dpi: ${builtins.toString(dpi)}
+          Xft.dpi: ${builtins.toString dpi}
+          *.dpi: ${builtins.toString dpi}
           marcel.fractionalDpi: ${fr_dpi}
           Xcursor.size: 32
         EOF
@@ -115,17 +114,17 @@ in
   sound.enable = true;
   hardware.pulseaudio = {
     enable = true;
-    extraModules = [ pkgs.pulseaudio-modules-bt ];
+    extraModules = [pkgs.pulseaudio-modules-bt];
     package = pkgs.pulseaudioFull;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.marcel = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "plocate" ]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel" "docker" "plocate"]; # Enable ‘sudo’ for the user.
   };
 
-  users.extraGroups.networkmanager.members = [ "root" ];
+  users.extraGroups.networkmanager.members = ["root"];
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
@@ -171,7 +170,7 @@ in
     # stuart = { config = '' config /root/nixos/openvpn/stuart.conf ''; };
   };
 
-  networking.extraHosts = '' '';
+  networking.extraHosts = '''';
 
   services.logind.lidSwitch = "suspend";
   services.lorri.enable = true;
@@ -192,5 +191,4 @@ in
   };
 
   system.stateVersion = "22.05";
-
 }

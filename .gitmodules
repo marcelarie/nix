@@ -1,0 +1,3 @@
+[submodule "home-manager"]
+	path = home-manager
+	url = git@github.com:marcelarie/home-manager.git

@@ -1,6 +1,8 @@
-{ pkgs, config, ... }:
-
 {
+  pkgs,
+  config,
+  ...
+}: {
   config.programs.bash = {
     enable = true;
     shellAliases = import ../aliases.nix;

@@ -1,6 +1,9 @@
-{ pkgs, config, lib, ... }:
-
 {
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
   config.programs.fish = {
     enable = true;
     shellInit = builtins.readFile ./prenix-config.fish;
