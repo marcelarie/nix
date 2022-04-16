@@ -167,6 +167,10 @@ in
     localuser = null;
   };
 
+  services.openvpn.servers = {
+    # stuart = { config = '' config /root/nixos/openvpn/stuart.conf ''; };
+  };
+
   networking.extraHosts = '' '';
 
   services.logind.lidSwitch = "suspend";

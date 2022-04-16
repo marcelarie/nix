@@ -105,7 +105,7 @@
   xp = "xsel --clipboard --output";
   node15 = "source /usr/share/nvm/init-nvm.sh";
   scp = "sh ~/scripts/(ls ~/scripts/ | fzy)"; # scripts selector
-  env = "printenv | fzy"; # scripts selector
+  # env = "printenv | fzy"; # scripts selector
   nm = "mw -Y && neomutt"; # refresh and open neomutt
   mc = "mcfly search";
   own = "zyc /home/marcel/clones/own";
@@ -137,6 +137,9 @@
   cw = "cargo watch -x run";
   cpub = "cargo publish";
   ctd = "cargo tree -d";
+
+  ### Custom Tools ###
+  glows = "ls *.md | entr -c glow";
 
   ### NixOS ###
   ns = "nix-shell";

@@ -45,6 +45,7 @@
       deno
       stylua
       nodePackages.prettier
+      nodePackages.prettier_d_slim
       perl534Packages.PerlTidy
       perl534Packages.PerlCritic
       perlPackages.PLS
@@ -218,6 +219,8 @@
     libtool
     automake
     node2nix
+    moreutils
+    entr
 
     # NUR
     nur.repos.afreakk.mongosh
