@@ -1,16 +1,17 @@
-{ config, pkgs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   username = "m.manzanares";
   homeDir = "/Users/m.manzanares";
-  customNodePackages = pkgs.callPackage ~/.nixpkgs/home-manager/programs/npm-packages { };
-in
-{
+  customNodePackages = pkgs.callPackage ~/.nixpkgs/home-manager/programs/npm-packages {};
+in {
   imports = [
     ./programs/vim
     ./programs/fish
     ./programs/kitty.nix
-    # ./programs/bash
+    ./programs/bash
     # ./programs/spacebar.nix
     # ./programs/shell-aliases.nix
   ];
@@ -47,6 +48,7 @@ in
       perl534Packages.PerlTidy
       perl534Packages.PerlCritic
       nodePackages.prettier
+      nodePackages.prettier_d_slim
 
       nodePackages.typescript
       nodePackages.intelephense
@@ -100,7 +102,7 @@ in
   #   };
   # };
 
-  home.packages = with pkgs;  [
+  home.packages = with pkgs; [
     # plocate
     alacritty
     rustup
@@ -147,7 +149,7 @@ in
     tridactyl-native
     jq
     # signal-desktop
-    (yarn.override { nodejs = null; })
+    (yarn.override {nodejs = null;})
     htop
     mongodb
     mongodb-tools
@@ -168,18 +170,20 @@ in
     helix
     # keepass
     skhd
+    zk
+    alejandra
     # yabai
-    (yabai.overrideAttrs (oldAttrs: rec {
-      inherit (oldAttrs) pname;
-      version = "4.0.0";
-      src = fetchFromGitHub
-        {
-          owner = "koekeishiya";
-          repo = pname;
-          rev = "v${version}";
-          sha256 = "rllgvj9JxyYar/DTtMn5QNeBTdGkfwqDr7WT3MvHBGI=";
-        };
-    }))
+    # (yabai.overrideAttrs (oldAttrs: rec {
+    #   inherit (oldAttrs) pname;
+    #   version = "4.0.0";
+    #   src = fetchFromGitHub
+    #     {
+    #       owner = "koekeishiya";
+    #       repo = pname;
+    #       rev = "v${version}";
+    #       sha256 = "rllgvj9JxyYar/DTtMn5QNeBTdGkfwqDr7WT3MvHBGI=";
+    #     };
+    # }))
     # (yabai.overrideAttrs {
     #   version = "4.0.0";
     #   src = fetchFromGitHub {

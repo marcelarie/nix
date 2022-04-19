@@ -104,6 +104,7 @@ cd () {
 [[ -f ~/.bashrc-personal ]] && . ~/.bashrc-personal
 
 eval "$(zoxide init bash)"
+# eval "$(starship init bash)"
 
 z () {
     __zoxide_z "$@";

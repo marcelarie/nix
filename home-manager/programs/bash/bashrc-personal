@@ -1,0 +1,13 @@
+ps1 () {
+    current_pwd="$( pwd | sed "s#$HOME#~#" )";
+    branch="$( git symbolic-ref --short HEAD 2>/dev/null )";
+    [[ $( git status -s 2>/dev/null ) ]] && changes="❗" || changes="";
+    PS1=" $current_pwd \e[0;36m$branch$changes\e[m \n  > ";
+}
+
+cd () {
+    builtin cd "$@";
+    ps1;
+}
+
+eval "$(starship init bash)"

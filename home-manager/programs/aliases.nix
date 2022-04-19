@@ -1,10 +1,11 @@
 let
   nixConfig = "~/.nixpkgs";
   home = "/Users/m.manzanares/";
-in
-derivation {
-  ls = "exa --git";
+in {
+  ls = "exa";
   l = "ls";
+  ll = "exa -l";
+  lla = "exa -la";
   cp = "cp -i"; # Confirm before overwriting something
   mv = "mv -i"; # Confirm before overwriting something
   rm = "rm -i"; # Confirm before overwriting something
