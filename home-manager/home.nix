@@ -1,13 +1,12 @@
-{ config
-, pkgs
-, ...
-}:
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   username = "m.manzanares";
   homeDir = "/Users/m.manzanares";
-  customNodePackages = pkgs.callPackage ~/.nixpkgs/home-manager/programs/npm-packages { };
-in
-{
+  customNodePackages = pkgs.callPackage ~/.nixpkgs/home-manager/programs/npm-packages {};
+in {
   imports = [
     ./programs/vim
     ./programs/fish
@@ -128,7 +127,7 @@ in
     sad
     gh
     python3
-    nodejs-12_x
+    nodejs-17_x
     # flameshot
     nixpkgs-fmt
     # slack
@@ -149,7 +148,7 @@ in
     tridactyl-native
     jq
     # signal-desktop
-    (yarn.override { nodejs = null; })
+    (yarn.override {nodejs = null;})
     htop
     mongodb
     mongodb-tools
