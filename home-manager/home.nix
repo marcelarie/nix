@@ -1,24 +1,24 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{ config
+, pkgs
+, ...
+}:
+let
   username = "m.manzanares";
   homeDir = "/Users/m.manzanares";
-  customNodePackages = pkgs.callPackage ~/.nixpkgs/home-manager/programs/npm-packages {};
-in {
+  customNodePackages = pkgs.callPackage ~/.nixpkgs/home-manager/programs/npm-packages { };
+in
+{
   imports = [
     ./programs/vim
     ./programs/fish
-    ./programs/kitty.nix
     ./programs/bash
-    # ./programs/spacebar.nix
-    # ./programs/shell-aliases.nix
+    ./programs/tmux
+    ./programs/alacritty
+    # ./programs/kitty.nix
   ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  # services.picom.enable = true;
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -85,7 +85,7 @@ in {
       options = {
         navigate = true;
         line-numbers = true;
-        syntax-theme = "calochortus-lyallii";
+        # syntax-theme = "calochortus-lyallii";
       };
     };
   };
@@ -149,7 +149,7 @@ in {
     tridactyl-native
     jq
     # signal-desktop
-    (yarn.override {nodejs = null;})
+    (yarn.override { nodejs = null; })
     htop
     mongodb
     mongodb-tools
@@ -160,7 +160,7 @@ in {
     cowsay
     # chromium
     # brave
-    hugo
+    # hugo
     cht-sh
     clang
     tree-sitter
@@ -172,6 +172,7 @@ in {
     skhd
     zk
     alejandra
+    exercism
     # yabai
     # (yabai.overrideAttrs (oldAttrs: rec {
     #   inherit (oldAttrs) pname;
@@ -193,41 +194,9 @@ in {
     #     sha256 = "0rxl0in3rhmrgg3v3l91amr497x37i2w1jqm52k0jb9my1sk67rs";
     #   };
     # })
-    # python39Packages.selenium
-    # python39Packages.requests
-    # maven
-    # ffmpeg
-    # gifsicle
-    # docker
-    # podman
-    # docker-compose
-    # docker-machine
-    # podman-compose
-
-    # NUR
-    # nur.repos.afreakk.mongosh
-
-    # NODE PACKAGES
-    # customNodePackages.cssmodules-language-server
-
-    # selenium-server-standalone
-    # polybar
-    # chromium
-    # leftwm
-    # chromium
-    # dunst
-    # update-systemd-resolved
-    # openvpn
-    # home-manager
-    # fish
-    # vim
-    # cargo
-    # sumneko-lua-language-server
   ];
 
   programs.java.enable = true;
-
-  # NODE PACKAGES
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

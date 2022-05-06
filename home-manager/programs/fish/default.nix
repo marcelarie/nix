@@ -22,6 +22,7 @@ in {
       current_branch = "git symbolic-ref --short HEAD";
       nfs = "cd ${nixConfig}; sudo darwin-rebuild switch --flake .# $argv; cd -";
       nsp = "nix-shell -p $argv";
+      nvm = "bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv";
       # hms = "cd ~/.config/nixos/; git add --all; home-manager switch --flake . $argv; cd -";
       # hmb = "cd ~/.config/nixos/; git add --all; home-manager build --flake . $argv; cd -";
       trs = ''
