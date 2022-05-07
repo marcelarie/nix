@@ -1,6 +1,3 @@
-# Build darwin flake using:
-# $ darwin-rebuild build --flake ./modules/examples#simple \
-#       --override-input darwin .
 {
   description = "Marcel's darwin system flake";
 
@@ -32,19 +29,20 @@
       config = {allowUnfree = true;};
       overlays = [
         nur.overlay
-        # neovim-nightly-overlay.overlay
-        (
-          import (
-            let
-              rev = "master";
-              # rev = "10e7407aa9e687bad3e167c46d2efd15eef47673"; # neovim 7 working rev
-              # rev = "3edbbcf631a94557c3bc599ec270c1cfe01a27d2"; # neovim 8 working rev
-            in
-              builtins.fetchTarball {
-                url = "https://github.com/nix-community/neovim-nightly-overlay/archive/${rev}.tar.gz";
-              }
-          )
-        )
+        neovim-nightly-overlay.overlay
+        # (self: super: { bashInteractive = super.bashInteractive_5; })
+        # (
+        #   import (
+        #     let
+        #       rev = "master";
+        #       # rev = "10e7407aa9e687bad3e167c46d2efd15eef47673"; # neovim 7 working rev
+        #       # rev = "3edbbcf631a94557c3bc599ec270c1cfe01a27d2"; # neovim 8 working rev
+        #     in
+        #       builtins.fetchTarball {
+        #         url = "https://github.com/nix-community/neovim-nightly-overlay/archive/${rev}.tar.gz";
+        #       }
+        #   )
+        # )
       ];
     };
     configuration = {pkgs, ...}: {
