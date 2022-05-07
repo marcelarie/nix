@@ -2,7 +2,7 @@
 # ~/.bashrc
 #
 
-# if test -e /etc/static/bashrc; then . /etc/static/bashrc; fi
+if test -e /etc/static/bashrc; then . /etc/static/bashrc; fi
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
@@ -78,6 +78,9 @@ alias personal='cp -Rf /personal/* ~'
 # personal
 alias vi="nvim"
 
+# NIX
+alias nfs="fish -c 'nfs'"
+
 # FUNCTIONS
 function goo() {
 	search="$@"
@@ -102,7 +105,7 @@ function goo() {
 #in there. They will not be overwritten by skel.
 # [[ -f ~/.bashrc-personal ]] && . ~/.bashrc-personal
 
-# eval "$(zoxide init bash)"
+eval "$(zoxide init bash)"
 eval "$(starship init bash)"
 
 # z () {
@@ -110,8 +113,8 @@ eval "$(starship init bash)"
 #     ps1;
 # }
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"                                       # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"                                       # This loads nvm
+# [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 
 # neofetch

@@ -85,16 +85,6 @@ in {
         };
       }
       {
-        name = "nvm";
-        src = pkgs.fetchFromGitHub {
-          owner = "jorgebucaran";
-          repo = "nvm.fish";
-          rev = "81170ef5bc127af4622aa456122c77f363f247bc";
-          sha256 = "0ra0yj8nksza1j84l5v5063w0cyxwwb7sxqggf2rlh3i3j77ldz6";
-          fetchSubmodules = true;
-        };
-      }
-      {
         name = "bass";
         src = pkgs.fetchFromGitHub {
           owner = "edc";

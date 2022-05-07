@@ -56,7 +56,7 @@ in {
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
       nodePackages.dockerfile-language-server-nodejs
-      customNodePackages.cssmodules-language-server
+      # customNodePackages.cssmodules-language-server
     ];
   };
 

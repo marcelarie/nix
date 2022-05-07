@@ -65,7 +65,8 @@ in {
   drc = "cd ~/.config/arco-dwm & nvim config.h";
   frc = "nvim ${nixConfig}/home-manager/programs/fish/default.nix";
   krc = "nvim ${nixConfig}/home-manager/programs/kitty.nix";
-  brc = "nvim ~/.bashrc";
+  # brc = "nvim ~/.bashrc";
+  brc = "nvim ${nixConfig}/home-manager/programs/bash/default.nix";
   lrc = "cd ~/.config/leftwm & nvim config.toml";
   clones = "~/clones";
   dots = "vi ~/.gitignore";
@@ -80,7 +81,7 @@ in {
   gorc = "cd ~/.config/nvim/";
 
   #### Docker ####
-  do = "docker";
+  # do = "docker";
   dor = "docker run";
   dob = "docker build";
   dos = "docker stop";
