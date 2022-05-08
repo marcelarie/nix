@@ -13,7 +13,7 @@ in {
     ./programs/bash
     ./programs/tmux
     ./programs/alacritty
-    # ./programs/zsh
+    ./programs/zsh
     # ./programs/kitty.nix
   ];
 
@@ -142,12 +142,13 @@ in {
     nodePackages.node2nix
     go
     helix
-    skhd
     zk
     alejandra
     stylua
     exercism
     shfmt
+    nsh
+    # spacebar
     # customNodePackages."@fsouza/prettierd"
     # librsync
     # yabai

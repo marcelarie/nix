@@ -354,7 +354,7 @@ alias jctl="journalctl -p 3 -xb"
 # eval "$(mcfly init zsh)"
 # export MCFLY_KEY_SCHEME=nvim
 # export MCFLY_FUZZY=true
-eval "$(zoxide init zsh)"
+# eval "$(zoxide init zsh)"
 
 ### AUTOS STARTS ###
 
@@ -363,10 +363,6 @@ eval "$(zoxide init zsh)"
 # DEFAULT => (?) 250 45
 # xset r rate 150 45
 
-alias luamake=/home/marcel/.config/nvim/language-servers/lua-language-server/3rd/luamake/luamake
-
 # ≃≃≃≃≃≃≃≃≃ #
 #  SOURCES  #
 # ≃≃≃≃≃≃≃≃≃ ⩨
-
-eval "$(zoxide init zsh)"

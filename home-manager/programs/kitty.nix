@@ -20,7 +20,7 @@ with lib; {
       # mouse_hide_wait = "3.0";
       focus_follows_mouse = true;
       # visual_bell_duration = "0.25";
-      #hide_window_decorations = true;
+      hide_window_decorations = true;
       scrollback_lines = 200000;
       copy_on_select = true;
       strip_trailing_spaces = "smart";

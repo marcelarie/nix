@@ -22,6 +22,9 @@ in {
 
   so = "source ~/.config/fish/config.fish";
 
+  src = "nvim ~/.config/skhd/skhdrc";
+  yrc = "nvim ~/.config/yabai/yabairc";
+
   #### Manjaro ####
   # pacmi = "sudo pacman-mirrors --fasttrack && sudo pacman -Syyu";
   #### Pacman ####

@@ -13,14 +13,14 @@
         dynamic_title = true;
         dynamic_padding = false;
         startup_mode = "Windowed";
-        # decorations = "full";
+        decorations = "none";
         dimensions = {
           columns = 100;
           lines = 85;
         };
         padding = {
-          x = 0;
-          y = 0;
+          x = 5;
+          y = 5;
         };
       };
 

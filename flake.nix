@@ -11,7 +11,8 @@
     darwin.url = github:lnl7/nix-darwin/master;
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    neovim-nightly-overlay.url = github:nix-community/neovim-nightly-overlay;
+    # spacebar.url = github:cmacrae/spacebar/v1.4.0;
   };
 
   outputs = {
@@ -20,6 +21,7 @@
     nixpkgs,
     darwin,
     home-manager,
+    # spacebar,
     neovim-nightly-overlay,
   }: let
     username = "m.manzanares";
@@ -29,6 +31,7 @@
       config = {allowUnfree = true;};
       overlays = [
         nur.overlay
+        # spacebar.overlay.x86_64-darwin
         neovim-nightly-overlay.overlay
         # (self: super: { bashInteractive = super.bashInteractive_5; })
         # (
@@ -54,6 +57,7 @@
       inherit pkgs system;
       modules = [
         ./darwin-configuration.nix
+        # ./yabai-spacebar-skhd.nix
         home-manager.darwinModules.home-manager
         {
           home-manager.useUserPackages = true;
