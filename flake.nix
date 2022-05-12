@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = github:nixos/nixpkgs/nixpkgs-unstable;
+    stable.url = github:nixos/nixpkgs/nixos-21.11;
 
     home-manager.url = github:nix-community/home-manager/master;
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -15,10 +16,11 @@
     # spacebar.url = github:cmacrae/spacebar/v1.4.0;
   };
 
-  outputs = {
+  outputs = inputs @ {
     self,
     nur,
     nixpkgs,
+    stable,
     darwin,
     home-manager,
     # spacebar,
@@ -26,26 +28,20 @@
   }: let
     username = "m.manzanares";
     system = "x86_64-darwin";
+    pkg-sets = final: prev: {
+      stable =
+        import inputs.stable
+        {system = final.system;};
+    };
     pkgs = import nixpkgs {
       inherit system;
       config = {allowUnfree = true;};
       overlays = [
+        pkg-sets
         nur.overlay
         # spacebar.overlay.x86_64-darwin
+        # (self: super: { kitty = stable.kitty; })
         neovim-nightly-overlay.overlay
-        # (self: super: { bashInteractive = super.bashInteractive_5; })
-        # (
-        #   import (
-        #     let
-        #       rev = "master";
-        #       # rev = "10e7407aa9e687bad3e167c46d2efd15eef47673"; # neovim 7 working rev
-        #       # rev = "3edbbcf631a94557c3bc599ec270c1cfe01a27d2"; # neovim 8 working rev
-        #     in
-        #       builtins.fetchTarball {
-        #         url = "https://github.com/nix-community/neovim-nightly-overlay/archive/${rev}.tar.gz";
-        #       }
-        #   )
-        # )
       ];
     };
     configuration = {pkgs, ...}: {

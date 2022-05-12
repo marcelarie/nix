@@ -43,8 +43,9 @@
       font = let
         # fontname = "SauceCodePro Nerd Font Mono";
         fontname = "FiraCode Nerd Font";
+        # fontname = "Recursive Mono Linear Static";
+        # fontname = "FiraCode Nerd Font Mono";
       in {
-        #font = let fontname = "Recursive Mono Linear Static"; in { # TODO fix this font with nerd font
         normal = {
           family = fontname;
           # style = "Semibold";

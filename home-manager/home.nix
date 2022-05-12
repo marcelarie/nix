@@ -14,7 +14,7 @@ in {
     ./programs/tmux
     ./programs/alacritty
     ./programs/zsh
-    # ./programs/kitty.nix
+    ./programs/kitty.nix
   ];
 
   # Let Home Manager install and manage itself.

@@ -7,6 +7,7 @@
 with lib; {
   config.programs.kitty = {
     enable = true;
+    package = pkgs.stable.kitty;
     font = {
       # package = pkgs.fira-code;
       name = "FiraCode Nerd Font";
@@ -19,6 +20,7 @@ with lib; {
       # cursor_stop_blinking_after = "15.0";
       # mouse_hide_wait = "3.0";
       focus_follows_mouse = true;
+      allow_remote_control = true;
       # visual_bell_duration = "0.25";
       hide_window_decorations = true;
       scrollback_lines = 200000;
