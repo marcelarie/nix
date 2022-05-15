@@ -114,7 +114,6 @@ in {
   sound.enable = true;
   hardware.pulseaudio = {
     enable = true;
-    extraModules = [pkgs.pulseaudio-modules-bt];
     package = pkgs.pulseaudioFull;
   };
 
@@ -152,7 +151,6 @@ in {
     liberation_ttf
     fira-code
     fira-code-symbols
-    # mplus-outline-fonts
     dina-font
     proggyfonts
     gohufont
