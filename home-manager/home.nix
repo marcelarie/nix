@@ -1,12 +1,13 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{ config
+, pkgs
+, ...
+}:
+let
   username = "m.manzanares";
   homeDir = "/Users/m.manzanares";
-  customNodePackages = pkgs.callPackage ./programs/npm-packages {};
-in {
+  customNodePackages = pkgs.callPackage ./programs/npm-packages { };
+in
+{
   imports = [
     ./programs/vim
     ./programs/fish
@@ -48,6 +49,7 @@ in {
       nodePackages.prettier
       nodePackages.prettier_d_slim
 
+      nodePackages.eslint_d
       nodePackages.typescript
       nodePackages.intelephense
       nodePackages.vim-language-server
@@ -126,7 +128,7 @@ in {
     python39Packages.pynvim
     tridactyl-native
     jq
-    (yarn.override {nodejs = null;})
+    (yarn.override { nodejs = null; })
     htop
     mongodb
     mongodb-tools
@@ -148,6 +150,8 @@ in {
     exercism
     shfmt
     nsh
+    bashInteractive
+    nodePackages.typescript
     # spacebar
     # customNodePackages."@fsouza/prettierd"
     # librsync

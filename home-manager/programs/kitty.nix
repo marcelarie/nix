@@ -1,8 +1,7 @@
-{
-  pkgs,
-  config,
-  lib,
-  ...
+{ pkgs
+, config
+, lib
+, ...
 }:
 with lib; {
   config.programs.kitty = {
@@ -22,6 +21,8 @@ with lib; {
       focus_follows_mouse = true;
       allow_remote_control = true;
       # visual_bell_duration = "0.25";
+      window_padding_width = 5;
+      window_margin_width = 0;
       hide_window_decorations = true;
       scrollback_lines = 200000;
       copy_on_select = true;

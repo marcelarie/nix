@@ -13,61 +13,66 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     neovim-nightly-overlay.url = github:nix-community/neovim-nightly-overlay;
-    # spacebar.url = github:cmacrae/spacebar/v1.4.0;
+    spacebar.url = github:cmacrae/spacebar/v1.4.0;
   };
 
-  outputs = inputs @ {
-    self,
-    nur,
-    nixpkgs,
-    stable,
-    darwin,
-    home-manager,
-    # spacebar,
-    neovim-nightly-overlay,
-  }: let
-    username = "m.manzanares";
-    system = "x86_64-darwin";
-    pkg-sets = final: prev: {
-      stable =
-        import inputs.stable
-        {system = final.system;};
-    };
-    pkgs = import nixpkgs {
-      inherit system;
-      config = {allowUnfree = true;};
-      overlays = [
-        pkg-sets
-        nur.overlay
-        # spacebar.overlay.x86_64-darwin
-        # (self: super: { kitty = stable.kitty; })
-        neovim-nightly-overlay.overlay
-      ];
-    };
-    configuration = {pkgs, ...}: {
-      nix.package = pkgs.nixFlakes;
-      services.nix-daemon.enable = true;
-    };
-  in {
-    darwinConfigurations."bcn-marcel-manzanares" = darwin.lib.darwinSystem {
-      inherit pkgs system;
-      modules = [
-        ./darwin-configuration.nix
-        # ./yabai-spacebar-skhd.nix
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.useUserPackages = true;
-          home-manager.useGlobalPkgs = true;
-          home-manager.users."m.manzanares" = {
-            # nixpkgs.overlays = pkgs.overlays;
-            # home.stateVersion = "22.05"; # <-- find how to active this and skip kitty 0,24 error
-            imports = [./home-manager/home.nix];
-          };
-        }
-      ];
-    };
+  outputs =
+    inputs @ { self
+    , nur
+    , nixpkgs
+    , stable
+    , darwin
+    , home-manager
+    , spacebar
+    , neovim-nightly-overlay
+    ,
+    }:
+    let
+      username = "m.manzanares";
+      system = "x86_64-darwin";
+      pkg-sets = final: prev: {
+        stable =
+          import inputs.stable
+            { system = final.system; };
+      };
+      pkgs = import nixpkgs {
+        inherit system;
+        config = { allowUnfree = true; };
+        overlays = [
+          pkg-sets
+          nur.overlay
+          spacebar.overlay.x86_64-darwin
+          neovim-nightly-overlay.overlay
+        ];
+      };
+      configuration = { pkgs, ... }: {
+        nix.package = pkgs.nixFlakes;
+        services.nix-daemon.enable = true;
+      };
+    in
+    {
+      darwinConfigurations."bcn-marcel-manzanares" = darwin.lib.darwinSystem {
+        inherit pkgs system;
+        modules = [
+          ./common.nix
+          ./darwin-configuration.nix
+          # ./yabai-spacebar-skhd.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useUserPackages = true;
+            home-manager.useGlobalPkgs = true;
+            home-manager.users."m.manzanares" = {
+              # nixpkgs.overlays = pkgs.overlays;
+              # home.stateVersion = "22.05"; # <-- find how to active this and skip kitty 0,24 error
+              imports = [
+                ./home-manager/home.nix
+              ];
+            };
+          }
+        ];
+      };
 
-    # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."bcn-marcel-manzanares".pkgs;
-  };
+      # Expose the package set, including overlays, for convenience.
+      darwinPackages = self.darwinConfigurations."bcn-marcel-manzanares".pkgs;
+    };
 }

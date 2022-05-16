@@ -64,7 +64,7 @@ in {
 
   #### Configs ####
   zrc = "nvim ~/.zshrc";
-  arc = "nvim ~/.config/alacritty/alacritty.yml";
+  arc = "nvim ${nixConfig}/home-manager/programs/alacritty/default.nix";
   drc = "cd ~/.config/arco-dwm & nvim config.h";
   frc = "nvim ${nixConfig}/home-manager/programs/fish/default.nix";
   krc = "nvim ${nixConfig}/home-manager/programs/kitty.nix";
