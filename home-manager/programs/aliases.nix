@@ -143,7 +143,7 @@
 
   ### NixOS ###
   ns = "nix-shell";
-  nfs = "sudo nixos-rebuild switch --flake ~/.config/nixos#";
+  nfs = "nixos-rebuild switch --use-remote-sudo --flake ~/.config/nixos#";
   nfu = "nix flake update ~/.config/nixos/";
   nrc = "nvim ~/.config/nixos/configuration.nix";
   nfrc = "nvim ~/.config/nixos/flake.nix";

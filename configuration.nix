@@ -1,14 +1,15 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{
-  config,
-  pkgs,
-  ...
-}: let
+{ config
+, pkgs
+, ...
+}:
+let
   dpi = 250;
   fr_dpi = "2.50";
-in {
+in
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -28,13 +29,13 @@ in {
   boot.loader.systemd-boot.consoleMode = "max";
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # boot.kernelPackages = pkgs.linuxPackages_5_16;
+  # boot.kernelPackages = pkgs.linuxPackages_5_17;
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.initrd.kernelModules = ["amdgpu"];
-  boot.kernelParams = ["quiet" "button.lid_init_state=open" "vt.global_cursor_default=0"];
+  boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.kernelParams = [ "quiet" "button.lid_init_state=open" "vt.global_cursor_default=0" ];
 
-  systemd.services.systemd-udev-settle.enable = false;
-  # systemd.services.NetworkManager-wait-online.enable = false;
+  # systemd.services.systemd-udev-settle.enable = false;
+  # systemd.services.NetworkManager-wait-online.enable = true;
 
   networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
@@ -62,13 +63,13 @@ in {
   console = {
     earlySetup = true;
     font = "${pkgs.terminus_font}/share/consolefonts/ter-132n.psf.gz";
-    packages = with pkgs; [terminus_font];
+    packages = with pkgs; [ terminus_font ];
     keyMap = "us";
   };
 
   services.xserver = {
     enable = true;
-    videoDrivers = ["amdgpu"];
+    videoDrivers = [ "amdgpu" ];
     desktopManager = {
       xterm.enable = true;
       # xfce.enable = true;
@@ -114,16 +115,15 @@ in {
   sound.enable = true;
   hardware.pulseaudio = {
     enable = true;
-    package = pkgs.pulseaudioFull;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.marcel = {
     isNormalUser = true;
-    extraGroups = ["wheel" "docker" "plocate"]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" "plocate" ]; # Enable ‘sudo’ for the user.
   };
 
-  users.extraGroups.networkmanager.members = ["root"];
+  users.extraGroups.networkmanager.members = [ "root" ];
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
@@ -177,6 +177,11 @@ in {
     enable = true;
     # settings = { };
   };
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "nodejs-12.22.12"
+    "electron-12.2.3"
+  ];
 
   # services.xserver.synaptics.enable = true;
   services.xserver.libinput = {
