@@ -1,5 +1,8 @@
 ## my personal nix config
 
+## TODO:
+- [ ] Fix neovim `eslint`
+
 - to use this configuration
 ```
 nixos-rebuild switch --flake <this_configuration_path>
