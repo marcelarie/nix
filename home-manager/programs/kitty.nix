@@ -1,12 +1,13 @@
-{ pkgs
-, config
-, lib
-, ...
+{
+  pkgs,
+  config,
+  lib,
+  ...
 }:
 with lib; {
   config.programs.kitty = {
     enable = true;
-    package = pkgs.stable.kitty;
+    # package = pkgs.stable.kitty;
     font = {
       # package = pkgs.fira-code;
       name = "FiraCode Nerd Font";

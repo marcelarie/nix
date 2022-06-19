@@ -1,7 +1,8 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 with lib; {
   config = {
@@ -30,14 +31,13 @@ with lib; {
     fonts.fonts = with pkgs; [
       font-awesome
       recursive
-      (nerdfonts.override { fonts = [ "FiraCode" ]; })
+      (nerdfonts.override {fonts = ["FiraCode"];})
     ];
 
     system.keyboard.enableKeyMapping = true;
     system.keyboard.remapCapsLockToEscape = true;
 
     programs.nix-index.enable = true;
-    programs.git.enable = true;
 
     # environment.shells = with pkgs; [
     # bashInteractive

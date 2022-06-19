@@ -1,13 +1,12 @@
-{ config
-, pkgs
-, ...
-}:
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   username = "m.manzanares";
   homeDir = "/Users/m.manzanares";
-  customNodePackages = pkgs.callPackage ./programs/npm-packages { };
-in
-{
+  customNodePackages = pkgs.callPackage ./programs/npm-packages {};
+in {
   imports = [
     ./programs/vim
     ./programs/fish
@@ -114,7 +113,6 @@ in
     fd
     sad
     gh
-    python3
     nodejs-17_x
     nixpkgs-fmt
     docker-compose
@@ -123,7 +121,7 @@ in
     tldr
     nix-prefetch-github
     glow
-    mitmproxy
+    # mitmproxy
     sumneko-lua-language-server
     mpv
     yt-dlp
@@ -131,9 +129,9 @@ in
     python39Packages.pynvim
     tridactyl-native
     jq
-    (yarn.override { nodejs = null; })
+    (yarn.override {nodejs = null;})
     htop
-    mongodb
+    # mongodb
     mongodb-tools
     nodePackages.speed-test
     nodePackages.pnpm

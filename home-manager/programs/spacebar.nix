@@ -1,7 +1,9 @@
-{ pkgs, config, ... }:
-
-with lib;
 {
+  pkgs,
+  config,
+  ...
+}:
+with lib; {
   config = {
     services.spacebar.enable = true;
     services.spacebar.package = pkgs.spacebar;
