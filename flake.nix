@@ -29,7 +29,7 @@
     }:
     let
       username = "m.manzanares";
-      system = "x86_64-darwin";
+      system = "aarch64-darwin";
       pkg-sets = final: prev: {
         stable =
           import inputs.stable
@@ -51,7 +51,7 @@
       };
     in
     {
-      darwinConfigurations."bcn-marcel-manzanares" = darwin.lib.darwinSystem {
+      darwinConfigurations."mmanzanares-MacBook-Pro" = darwin.lib.darwinSystem {
         inherit pkgs system;
         modules = [
           ./common.nix
@@ -65,7 +65,7 @@
               # nixpkgs.overlays = pkgs.overlays;
               # home.stateVersion = "22.05"; # <-- find how to active this and skip kitty 0,24 error
               imports = [
-                ./home-manager/home.nix
+                # ./home-manager/home.nix
               ];
             };
           }

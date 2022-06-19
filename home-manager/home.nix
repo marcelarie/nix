@@ -92,6 +92,9 @@ in
   };
 
   home.packages = with pkgs; [
+    coreutils
+    curl
+    wget
     alacritty
     rustup
     pkg-config
