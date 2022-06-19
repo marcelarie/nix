@@ -6,6 +6,10 @@
 nixos-rebuild switch --flake <this_configuration_path>
 ```
 
+## TO-Do's
+
+- [ ] fix `shopt` error in zsh with `setopt`
+
 ## Notes
 
 - Direct overlay:

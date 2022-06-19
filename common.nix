@@ -1,8 +1,7 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }:
 with lib; {
   config = {
@@ -25,13 +24,14 @@ with lib; {
       SYS_THEME = "dark";
       VI_CONFIG = "~/.config/nvim/init.vim";
       TERMINFO_DIRS = "${pkgs.kitty.terminfo.outPath}/share/terminfo";
+      TERM = "xterm";
     };
 
     fonts.fontDir.enable = true;
     fonts.fonts = with pkgs; [
       font-awesome
       recursive
-      (nerdfonts.override {fonts = ["FiraCode"];})
+      (nerdfonts.override { fonts = [ "FiraCode" ]; })
     ];
 
     system.keyboard.enableKeyMapping = true;

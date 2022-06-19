@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-  config.programs.bash = {
+  config.programs.zsh = {
     enable = true;
     initExtra = builtins.readFile ./zshrc;
     # profileExtra = builtins.readFile ./profile;

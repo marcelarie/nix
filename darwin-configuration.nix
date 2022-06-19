@@ -1,7 +1,6 @@
-{
-  config,
-  pkgs,
-  ...
+{ config
+, pkgs
+, ...
 }: {
   nix = {
     package = pkgs.nixFlakes;
@@ -23,7 +22,7 @@
     repo = "nix-node";
   };
 
-  nix.binaryCaches = ["https://cache.nixos.org/" "https://nix-node.cachix.org/"];
+  nix.binaryCaches = [ "https://cache.nixos.org/" "https://nix-node.cachix.org/" ];
 
   system.stateVersion = 4;
 }
