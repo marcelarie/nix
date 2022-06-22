@@ -42,7 +42,7 @@
         overlays = [
           pkg-sets
           nur.overlay
-          spacebar.overlay.x86_64-darwin
+          spacebar.overlay.aarch64-darwin
           neovim-nightly-overlay.overlay
         ];
       };
@@ -64,7 +64,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.users."${username}" = {
               # nixpkgs.overlays = pkgs.overlays;
-              # home.stateVersion = "22.05"; # <-- find how to active this and skip kitty 0,24 error
+              home.stateVersion = "22.05"; # <-- find how to active this and skip kitty 0,24 error
               imports = [
                 ./home-manager/home.nix
               ];

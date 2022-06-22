@@ -1,7 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-if test -e /etc/static/bashrc; then . /etc/static/bashrc; fi
+# if test -e /etc/static/bashrc; then . /etc/static/bashrc; fi
 # source ~/programs/common
 
 # Path to your oh-my-zsh installation.
@@ -347,10 +347,12 @@ alias cd..='cd ..'
 #search content with ripgrep
 alias rg="rg --sort path"
 
+alias nfs="cd ~/.nixpkgs; sudo darwin-rebuild switch --flake .#; cd-"
+
 #get the error messages from journalctl
 alias jctl="journalctl -p 3 -xb"
 
-# source /etc/zshrc
+source /etc/zshrc
 eval $(/opt/homebrew/bin/brew shellenv);
 
 export NVM_DIR="$HOME/.nvm"
@@ -358,6 +360,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
 
 ### init ###
 # eval "$(mcfly init zsh)"

@@ -45,10 +45,10 @@ in
       perlPackages.PLS
       perl534Packages.PerlTidy
       perl534Packages.PerlCritic
-      nodePackages.prettier
-      nodePackages.prettier_d_slim
+      # nodePackages.prettier
+      # nodePackages.prettier_d_slim
 
-      nodePackages.eslint_d
+      # nodePackages.eslint_d
       nodePackages.typescript
       nodePackages.intelephense
       nodePackages.vim-language-server
@@ -101,6 +101,7 @@ in
     starship
     exa
     neofetch
+    onefetch
     feh
     skim
     fzf
@@ -109,11 +110,11 @@ in
     ripgrep
     lua
     lua53Packages.luarocks
-    python3
+    python
     fd
     sad
     gh
-    nodejs-17_x
+    nodejs
     nixpkgs-fmt
     docker-compose
     libnotify
@@ -154,6 +155,7 @@ in
     bashInteractive
     nodePackages.typescript
     rnix-lsp
+    vifm
     # spacebar
     # customNodePackages."@fsouza/prettierd"
     # librsync

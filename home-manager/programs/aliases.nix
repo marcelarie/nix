@@ -1,7 +1,8 @@
 let
   nixConfig = "~/.nixpkgs";
   home = "/Users/m.manzanares/";
-in {
+in
+{
   ls = "exa";
   l = "ls";
   ll = "exa -l";
@@ -149,6 +150,7 @@ in {
   nrc = "nvim ${nixConfig}/darwin-configuration.nix";
   nfrc = "nvim ${nixConfig}/flake.nix";
   nfu = "nix flake update ${nixConfig}";
+  # nfs = "cd ${nixConfig}; sudo darwin-rebuild switch --flake .#; cd -";
 
   #-> ### Home Manager  ###
   hrc = "nvim ${nixConfig}/home-manager/home.nix";
@@ -232,6 +234,7 @@ in {
   gcs = "git commit -S";
 
   gd = "git diff";
+  gds = "git diff --staged";
   gdca = "git diff --cached";
   gdct = "git describe --tags `git rev-list --tags --max-count 1`";
   gdt = "git diff-tree --no-commit-id --name-only -r";

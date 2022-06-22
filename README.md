@@ -28,3 +28,9 @@ nixos-rebuild switch --flake <this_configuration_path>
   )
 )
 ```
+
+### Useful commands
+
+Disable protection on macOS
+`sudo spctl --master-disable` 
+
