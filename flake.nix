@@ -56,6 +56,7 @@
         inherit pkgs system;
         modules = [
           ./common.nix
+          # ./programs/tmux.nix
           ./darwin-configuration.nix
           # ./yabai-spacebar-skhd.nix
           home-manager.darwinModules.home-manager
