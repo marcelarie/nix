@@ -64,7 +64,7 @@ in
   yig = "yarn install -g";
 
   #### Configs ####
-  zrc = "nvim ~/.zshrc";
+  zrc = "nvim ${nixConfig}/home-manager/programs/zsh/zshrc";
   arc = "nvim ${nixConfig}/home-manager/programs/alacritty/default.nix";
   drc = "cd ~/.config/arco-dwm & nvim config.h";
   frc = "nvim ${nixConfig}/home-manager/programs/fish/default.nix";

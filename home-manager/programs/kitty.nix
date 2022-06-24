@@ -1,8 +1,7 @@
-{
-  pkgs,
-  config,
-  lib,
-  ...
+{ pkgs
+, config
+, lib
+, ...
 }:
 with lib; {
   config.programs.kitty = {
@@ -17,6 +16,8 @@ with lib; {
       cursor_shape = "underline"; # (block, beam, underline)
       cursor_beam_thickness = "0.5";
       cursor_underline_thickness = "0.5";
+      confirm_os_window_close = "0";
+      close_window_with_confirmation = "0";
       # cursor_stop_blinking_after = "15.0";
       # mouse_hide_wait = "3.0";
       focus_follows_mouse = true;

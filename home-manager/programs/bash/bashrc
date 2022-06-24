@@ -105,6 +105,10 @@ function goo() {
 #in there. They will not be overwritten by skel.
 # [[ -f ~/.bashrc-personal ]] && . ~/.bashrc-personal
 
+# Add Homebrew's executable directory to the front of the PATH
+export PATH=/usr/local/bin:$PATH
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(zoxide init bash)"
 eval "$(starship init bash)"
 

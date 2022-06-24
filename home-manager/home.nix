@@ -48,7 +48,7 @@ in
       # nodePackages.prettier
       # nodePackages.prettier_d_slim
 
-      # nodePackages.eslint_d
+      nodePackages.eslint_d
       nodePackages.typescript
       nodePackages.intelephense
       nodePackages.vim-language-server
@@ -156,6 +156,8 @@ in
     nodePackages.typescript
     rnix-lsp
     vifm
+    pm2
+    # skhd
     # spacebar
     # customNodePackages."@fsouza/prettierd"
     # librsync

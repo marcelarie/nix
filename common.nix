@@ -25,6 +25,7 @@ with lib; {
       VI_CONFIG = "~/.config/nvim/init.vim";
       TERMINFO_DIRS = "${pkgs.kitty.terminfo.outPath}/share/terminfo";
       TERM = "xterm";
+      EDITOR = "nvim";
     };
 
     fonts.fontDir.enable = true;
@@ -33,6 +34,11 @@ with lib; {
       recursive
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
     ];
+
+    # services.skhd = {
+    #   enable = true;
+    #   package = pkgs.skhd;
+    # };
 
     system.keyboard.enableKeyMapping = true;
     system.keyboard.remapCapsLockToEscape = true;

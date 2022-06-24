@@ -347,7 +347,7 @@ alias cd..='cd ..'
 #search content with ripgrep
 alias rg="rg --sort path"
 
-alias nfs="cd ~/.nixpkgs; sudo darwin-rebuild switch --flake .#; cd-"
+alias nfs="cd ~/.nixpkgs; sudo darwin-rebuild switch --flake .#; cd -"
 
 #get the error messages from journalctl
 alias jctl="journalctl -p 3 -xb"

@@ -1,40 +1,41 @@
-{
-  pkgs,
-  spacebar,
-  ...
-}: let
+{ pkgs
+, spacebar
+, ...
+}:
+let
   spacebar_height = 25;
-in {
-  # services.yabai = {
-  #   enable = true;
-  #   enableScriptingAddition = true;
-  #   package = pkgs.yabai.overrideAttrs (old: rec {
-  #     version = "4.0.0";
-  #     src = pkgs.fetchFromGitHub {
-  #       owner = "koekeishiya";
-  #       repo = "yabai";
-  #       rev = "41414989666232f4344329e250f38db2f0a1cc48";
-  #       sha256 = "sha256-xpp1WKUCF/+MWBRdV/QLL7GpdE0lsN4rAPjqLhDL41U=";
-  #     };
-  #   });
-  #   config = {
-  #     auto_balance = "on";
-  #     layout = "bsp";
-  #     bottom_padding = 48;
-  #     left_padding = 18;
-  #     right_padding = 18;
-  #     top_padding = 18;
-  #     window_gap = 18;
-  #     mouse_follows_focus = "on";
-  #     mouse_modifier = "fn";
-  #     split_ratio = "0.50";
-  #     window_placement = "second_child";
-  #     window_topmost = "off";
-  #     window_opacity = "off";
-  #     window_shadow = "on";
-  #     window_border = "off";
-  #   };
-  # };
+in
+{
+  services.yabai = {
+    enable = true;
+    enableScriptingAddition = true;
+    package = pkgs.yabai.overrideAttrs (old: rec {
+      version = "4.0.0";
+      src = pkgs.fetchFromGitHub {
+        owner = "koekeishiya";
+        repo = "yabai";
+        rev = "41414989666232f4344329e250f38db2f0a1cc48";
+        sha256 = "sha256-xpp1WKUCF/+MWBRdV/QLL7GpdE0lsN4rAPjqLhDL41U=";
+      };
+    });
+    config = {
+      auto_balance = "on";
+      layout = "bsp";
+      bottom_padding = 48;
+      left_padding = 18;
+      right_padding = 18;
+      top_padding = 18;
+      window_gap = 18;
+      mouse_follows_focus = "on";
+      mouse_modifier = "fn";
+      split_ratio = "0.50";
+      window_placement = "second_child";
+      window_topmost = "off";
+      window_opacity = "off";
+      window_shadow = "on";
+      window_border = "off";
+    };
+  };
   services.spacebar = {
     enable = true;
     package = pkgs.spacebar;
@@ -68,7 +69,7 @@ in {
   };
   services.skhd = {
     enable = true;
-    # package = pkgs.skhd;
+    package = pkgs.skhd;
     skhdConfig = ''
       # focus window
       # here the || was added so the selection cycles and doesn't stop at the end or beginning

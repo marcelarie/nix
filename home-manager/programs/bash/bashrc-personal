@@ -9,5 +9,3 @@ cd () {
     builtin cd "$@";
     ps1;
 }
-
-eval "$(starship init bash)"
