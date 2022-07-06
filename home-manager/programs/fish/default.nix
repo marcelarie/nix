@@ -19,7 +19,7 @@ in
             && git merge origin/$branch
       '';
       gitignore = "curl -sL https://www.gitignore.io/api/$argv";
-      goo = "xdg-open \"https://www.google.com/search?q=$argv\" ";
+      goo = "open \"https://www.google.com/search?q=$argv\" ";
       current_branch = "git symbolic-ref --short HEAD";
       nfs = "cd ${nixConfig}; sudo darwin-rebuild switch --flake .# $argv; cd -";
       nsp = "nix-shell -p $argv";

@@ -15,7 +15,7 @@ with lib; {
     programs.fish.enable = true;
 
     environment.systemPackages = with pkgs; [
-      gcc
+      # gcc
       cmake
       # bind
     ];
@@ -23,7 +23,8 @@ with lib; {
     environment.variables = {
       SYS_THEME = "dark";
       VI_CONFIG = "~/.config/nvim/init.vim";
-      TERMINFO_DIRS = "${pkgs.kitty.terminfo.outPath}/share/terminfo";
+      UNAME = "Darwin";
+      # TERMINFO_DIRS = "${pkgs.kitty.terminfo.outPath}/share/terminfo";
       TERM = "xterm";
       EDITOR = "nvim";
     };

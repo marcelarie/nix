@@ -19,7 +19,7 @@ in
   ];
 
   # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  # programs.home-manager.enable = true;
 
   home.username = username;
   # home.homeDirectory = homeDir;
@@ -34,7 +34,6 @@ in
     extraConfig = ''luafile ${homeDir}/.config/nvim/nix.init.lua'';
 
     extraPackages = with pkgs; [
-      deno
       texlab
       stylua
       sqlite
@@ -151,37 +150,18 @@ in
     stylua
     exercism
     shfmt
-    nsh
     bashInteractive
     nodePackages.typescript
     rnix-lsp
     vifm
     pm2
-    # skhd
+    deno
+    tree
+    gitlint
     # spacebar
     # customNodePackages."@fsouza/prettierd"
     # librsync
     # yabai
-    # (yabai.overrideAttrs (oldAttrs: rec {
-    #   inherit (oldAttrs) pname;
-    #   version = "4.0.0";
-    #   src = fetchFromGitHub
-    #     {
-    #       owner = "koekeishiya";
-    #       repo = pname;
-    #       rev = "v${version}";
-    #       sha256 = "rllgvj9JxyYar/DTtMn5QNeBTdGkfwqDr7WT3MvHBGI=";
-    #     };
-    # }))
-    # (yabai.overrideAttrs {
-    #   version = "4.0.0";
-    #   src = fetchFromGitHub {
-    #     owner = "koekeishiya";
-    #     repo = "yabai";
-    #     rev = "v4.0.0";
-    #     sha256 = "0rxl0in3rhmrgg3v3l91amr497x37i2w1jqm52k0jb9my1sk67rs";
-    #   };
-    # })
 
     # element-desktop
     # discord

@@ -359,7 +359,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
 ### init ###
@@ -370,7 +370,7 @@ eval "$(zoxide init zsh)"
 
 ### AUTOS STARTS ###
 
- # pfetch
+# pfetch
 # wbcn
 # DEFAULT => (?) 250 45
 # xset r rate 150 45

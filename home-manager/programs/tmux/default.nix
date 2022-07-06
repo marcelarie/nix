@@ -1,11 +1,7 @@
 { pkgs
 , config
 , ...
-}:
-let
-  tmuxMenuSeperator = "''";
-in
-{
+}: {
   config.programs.tmux = {
     aggressiveResize = true;
     baseIndex = 1;

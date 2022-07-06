@@ -6,7 +6,10 @@
 with lib; {
   config.programs.kitty = {
     enable = true;
-    # package = pkgs.stable.kitty;
+    package = pkgs.kitty.overrideAttrs (old: {
+      doChek = false;
+      doInstallCheck = false;
+    });
     font = {
       # package = pkgs.fira-code;
       name = "FiraCode Nerd Font";

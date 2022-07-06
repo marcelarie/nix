@@ -13,9 +13,6 @@ in
   df = "df -h"; # Human-readable sizes
   free = "free -m"; # Show sizes in MB
 
-  grep = "grep --colour = auto";
-  egrep = "egrep --colour = auto";
-  fgrep = "fgrep --colour = auto";
   ".." = "cd ..";
   "..." = "cd ../..";
   "...." = "cd ../../..";
@@ -47,6 +44,7 @@ in
   grssa = "git restore --staged *";
   glom = "git pull origin (git branch -rl \"*/HEAD\" | rev | cut -d/ -f1 | rev)";
   glof = "git log --oneline -M --stat --follow --";
+  glast = "git log --pretty=format:\"%h\" HEAD^..HEAD";
   gstal = "git stash list";
   grec = "git log --graph --oneline --decorate ( git fsck --no-reflog | awk \";/dangling commit/ {print $3}\" )";
   gstapp = "git stash apply";
@@ -69,6 +67,7 @@ in
   drc = "cd ~/.config/arco-dwm & nvim config.h";
   frc = "nvim ${nixConfig}/home-manager/programs/fish/default.nix";
   krc = "nvim ${nixConfig}/home-manager/programs/kitty.nix";
+  wrc = "nvim ~/.config/wezterm/wezterm.lua";
   # brc = "nvim ~/.bashrc";
   brc = "nvim ${nixConfig}/home-manager/programs/bash/default.nix";
   lrc = "cd ~/.config/leftwm & nvim config.toml";
