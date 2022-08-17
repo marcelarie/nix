@@ -19,8 +19,8 @@
           lines = 85;
         };
         padding = {
-          x = 5;
-          y = 5;
+          x = 40;
+          y = 40;
         };
       };
 
@@ -43,6 +43,7 @@
       font = let
         # fontname = "SauceCodePro Nerd Font Mono";
         fontname = "FiraCode Nerd Font";
+        # fontname = "JetBrains Mono";
         # fontname = "Recursive Mono Linear Static";
         # fontname = "FiraCode Nerd Font Mono";
       in {

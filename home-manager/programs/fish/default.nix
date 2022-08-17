@@ -1,13 +1,12 @@
-{ pkgs
-, config
-, lib
-, ...
-}:
-let
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: let
   nixConfig = "~/.nixpkgs";
   home = "/Users/m.manzanares/";
-in
-{
+in {
   config.programs.fish = {
     enable = true;
     shellInit = builtins.readFile ./prenix-config.fish;
@@ -15,13 +14,13 @@ in
       gld = ''
         set branch (git rev-parse --abbrev-ref HEAD)
         git fetch \
-            && git log --color -p --full-diff $branch..origin/$branch \
-            && git merge origin/$branch
+        && git log --color -p --full-diff $branch..origin/$branch \
+        && git merge origin/$branch
       '';
       gitignore = "curl -sL https://www.gitignore.io/api/$argv";
       goo = "open \"https://www.google.com/search?q=$argv\" ";
       current_branch = "git symbolic-ref --short HEAD";
-      nfs = "cd ${nixConfig}; sudo darwin-rebuild switch --flake .# $argv; cd -";
+      nfs = "sudo darwin-rebuild switch --flake ~/.nixpkgs# $argv;";
       nsp = "nix-shell -p $argv";
       nvm = "bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv";
       # hms = "cd ~/.config/nixos/; git add --all; home-manager switch --flake . $argv; cd -";

@@ -16,7 +16,7 @@ with lib; {
 
     environment.systemPackages = with pkgs; [
       # gcc
-      cmake
+      # cmake
       # bind
     ];
 

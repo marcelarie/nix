@@ -1,8 +1,7 @@
 let
   nixConfig = "~/.nixpkgs";
   home = "/Users/m.manzanares/";
-in
-{
+in {
   ls = "exa";
   l = "ls";
   ll = "exa -l";
@@ -59,6 +58,7 @@ in
   yu = "yarn update";
   yi = "yarn install";
   ya = "yarn add";
+  yb = "yarn build";
   yig = "yarn install -g";
 
   #### Configs ####
@@ -73,6 +73,10 @@ in
   lrc = "cd ~/.config/leftwm & nvim config.toml";
   clones = "~/clones";
   dots = "vi ~/.gitignore";
+
+  #### Zk ####
+  zkn = "cd ~/clones/pers/notes; zk new";
+  zko = "cd ~/clones/pers/notes; nvim -c 'ZkNotes'";
 
   #### Nvim ####
   vi = "nvim";
@@ -130,6 +134,9 @@ in
   tn = "tmux new-session"; # Creates a new session
   tl = "tmux list-sessions"; # Lists all ongoing sessions
   ts = "tmux switch -t (tmux ls | cut -f1 -d\":\" | fzy)";
+  tks = "tmux kill-session -t"; # Kills a session
+  two = "~/scripts/tmux/work1.sh"; # Run work auto session script
+  tpe = "~/scripts/tmux/pers1.sh"; # Run personal auto session script
 
   #### Rust ####
   cn = "cargo new";
@@ -149,7 +156,10 @@ in
   nrc = "nvim ${nixConfig}/darwin-configuration.nix";
   nfrc = "nvim ${nixConfig}/flake.nix";
   nfu = "nix flake update ${nixConfig}";
-  # nfs = "cd ${nixConfig}; sudo darwin-rebuild switch --flake .#; cd -";
+  nixin = "~/scripts/nix-search.sh";
+
+  ### Topgrade ###
+  tg = "topgrade";
 
   #-> ### Home Manager  ###
   hrc = "nvim ${nixConfig}/home-manager/home.nix";
