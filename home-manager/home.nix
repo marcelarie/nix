@@ -1,12 +1,13 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{ config
+, pkgs
+, ...
+}:
+let
   username = "m.manzanares";
   homeDir = "/Users/m.manzanares";
-  customNodePackages = pkgs.callPackage ./programs/npm-packages {};
-in {
+  customNodePackages = pkgs.callPackage ./programs/npm-packages { };
+in
+{
   imports = [
     ./programs/vim
     ./programs/fish
@@ -40,7 +41,7 @@ in {
       sumneko-lua-language-server
 
       perlPackages.PLS
-      perl534Packages.PerlTidy
+      # perl534Packages.PerlTidy
       perl534Packages.PerlCritic
       # nodePackages.prettier
       # nodePackages.prettier_d_slim
@@ -128,7 +129,7 @@ in {
     python39Packages.pynvim
     tridactyl-native
     jq
-    (yarn.override {nodejs = null;})
+    (yarn.override { nodejs = null; })
     htop
     # mongodb
     mongodb-tools
@@ -162,6 +163,7 @@ in {
     python310Packages.flake8
     freshfetch
     obsidian
+    perl534Packages.PerlTidy
 
     #<DISCARDED_PACKAGES>
     # spacebar

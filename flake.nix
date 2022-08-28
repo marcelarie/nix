@@ -47,6 +47,17 @@
           nur.overlay
           spacebar.overlay.aarch64-darwin
           neovim-nightly-overlay.overlay
+          # (
+          #   import (
+          #     let
+          #       # rev = "master";
+          #       rev = "6a8790f60859a7ba074af3d0bc373813f2eac15b"; # neovim 8 working rev
+          #     in
+          #       builtins.fetchTarball {
+          #         url = "https://github.com/nix-community/neovim-nightly-overlay/archive/${rev}.tar.gz";
+          #       }
+          #   )
+          # )
         ];
       };
       configuration = { pkgs, ... }: {

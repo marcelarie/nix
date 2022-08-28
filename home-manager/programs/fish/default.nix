@@ -1,12 +1,13 @@
-{
-  pkgs,
-  config,
-  lib,
-  ...
-}: let
+{ pkgs
+, config
+, lib
+, ...
+}:
+let
   nixConfig = "~/.nixpkgs";
   home = "/Users/m.manzanares/";
-in {
+in
+{
   config.programs.fish = {
     enable = true;
     shellInit = builtins.readFile ./prenix-config.fish;

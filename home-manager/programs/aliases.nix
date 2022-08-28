@@ -1,7 +1,8 @@
 let
   nixConfig = "~/.nixpkgs";
   home = "/Users/m.manzanares/";
-in {
+in
+{
   ls = "exa";
   l = "ls";
   ll = "exa -l";
@@ -190,6 +191,9 @@ in {
   hibernate = "sudo systemctl hibernate";
   hybridsleep = "sudo systemctl hybrid-sleep";
 
+  ### macOS ###
+  trash = "rm -rf ~/.Trash/*";
+
   ### Own ###
   #  gtm = "$HOME/clones/own/git-tellme/target/release/gtm"
   #  gtm = "$HOME/clones/own/git-tellme/target/release/gtm"
@@ -337,4 +341,8 @@ in {
 
   gwch = "git whatchanged -p --abbrev-commit --pretty medium";
   gwip = "git add -A; git rm (git ls-files --deleted) 2> /dev/null; git commit -m \"--wip--\"";
+
+  ## 1pass ###
+  opl = "op item list --vault Private";
+  opg = "op item get";
 }

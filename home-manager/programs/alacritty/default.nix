@@ -1,8 +1,7 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
+{ config
+, pkgs
+, lib
+, ...
 }: {
   programs.alacritty = {
     enable = true;
@@ -29,7 +28,7 @@
         multiplier = 3;
       };
 
-      mouse = {hide_when_typing = true;};
+      mouse = { hide_when_typing = true; };
 
       key_bindings = [
         {
@@ -40,37 +39,39 @@
         }
       ];
 
-      font = let
-        # fontname = "SauceCodePro Nerd Font Mono";
-        fontname = "FiraCode Nerd Font";
-        # fontname = "JetBrains Mono";
-        # fontname = "Recursive Mono Linear Static";
-        # fontname = "FiraCode Nerd Font Mono";
-      in {
-        normal = {
-          family = fontname;
-          # style = "Semibold";
+      font =
+        let
+          # fontname = "SauceCodePro Nerd Font Mono";
+          fontname = "FiraCode Nerd Font";
+          # fontname = "JetBrains Mono";
+          # fontname = "Recursive Mono Linear Static";
+          # fontname = "FiraCode Nerd Font Mono";
+        in
+        {
+          normal = {
+            family = fontname;
+            # style = "Semibold";
+          };
+          bold = {
+            family = fontname;
+            style = "Medium";
+          };
+          italic = {
+            family = fontname;
+            # style = "Semibold Italic";
+            style = "Light Italic";
+          };
+          size = 13;
+          glyph_offset = {
+            x = 0;
+            y = 0;
+          };
+          offset = {
+            x = 0;
+            y = 0;
+          };
+          use_thin_strokes = true;
         };
-        bold = {
-          family = fontname;
-          style = "Medium";
-        };
-        italic = {
-          family = fontname;
-          # style = "Semibold Italic";
-          style = "Light Italic";
-        };
-        size = 13;
-        glyph_offset = {
-          x = 0;
-          y = 0;
-        };
-        offset = {
-          x = 0;
-          y = 0;
-        };
-        use_thin_strokes = true;
-      };
       cursor.style = "Block";
       draw_bold_text_with_bright_colors = false;
 

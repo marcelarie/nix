@@ -22,7 +22,7 @@
     repo = "nix-node";
   };
 
-  nix.binaryCaches = [ "https://cache.nixos.org/" "https://nix-node.cachix.org/" ];
+  nix.settings.substituters = [ "https://cache.nixos.org/" "https://nix-node.cachix.org/" ];
 
   system.stateVersion = 4;
 }
