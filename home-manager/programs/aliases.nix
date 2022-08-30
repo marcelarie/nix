@@ -74,6 +74,7 @@ in
   lrc = "cd ~/.config/leftwm & nvim config.toml";
   clones = "~/clones";
   dots = "vi ~/.gitignore";
+  alrc = "nvim ${nixConfig}/home-manager/programs/aliases.nix";
 
   #### Zk ####
   zkn = "cd ~/clones/pers/notes; zk new";
@@ -345,4 +346,8 @@ in
   ## 1pass ###
   opl = "op item list --vault Private";
   opg = "op item get";
+
+  ## scripts ##
+  # cd = "source ~/scripts/zd-fish.fish";
+  # z = "source ~/scripts/zd-fish-zoxide.fish";
 }

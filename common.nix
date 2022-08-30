@@ -1,8 +1,4 @@
-{ config
-, lib
-, pkgs
-, ...
-}:
+{ config, lib, pkgs, ... }:
 with lib; {
   config = {
     # Collect nix store garbage and optimise daily.
@@ -14,11 +10,12 @@ with lib; {
     programs.zsh.enable = true; # default shell on MacOS
     programs.fish.enable = true;
 
-    environment.systemPackages = with pkgs; [
-      # gcc
-      # cmake
-      # bind
-    ];
+    environment.systemPackages = with pkgs;
+      [
+        # gcc
+        # cmake
+        # bind
+      ];
 
     environment.variables = {
       SYS_THEME = "dark";

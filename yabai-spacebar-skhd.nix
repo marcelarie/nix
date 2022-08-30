@@ -1,11 +1,6 @@
-{ pkgs
-, spacebar
-, ...
-}:
-let
-  spacebar_height = 25;
-in
-{
+{ pkgs, spacebar, ... }:
+let spacebar_height = 25;
+in {
   services.yabai = {
     enable = true;
     enableScriptingAddition = true;
@@ -52,7 +47,8 @@ in
       spacing_left = 25;
       spacing_right = 25;
       text_font = ''"FiraCode Nerd Font:16.0"'';
-      icon_font = ''"Font Awesome 5 Free:Solid:12.0, Font Awesome 5 Brands:Courant:12.0"'';
+      icon_font = ''
+        "Font Awesome 5 Free:Solid:12.0, Font Awesome 5 Brands:Courant:12.0"'';
       background_color = "0xff202020";
       foreground_color = "0xffD8DEE9";
       space_icon_color = "0xff8fBcBB";

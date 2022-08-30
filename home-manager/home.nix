@@ -164,6 +164,7 @@ in
     freshfetch
     obsidian
     perl534Packages.PerlTidy
+    nixfmt
 
     #<DISCARDED_PACKAGES>
     # spacebar
@@ -189,3 +190,4 @@ in
 
   programs.java.enable = true;
 }
+

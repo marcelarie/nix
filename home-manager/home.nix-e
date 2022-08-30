@@ -15,7 +15,7 @@ in
     ./programs/tmux
     ./programs/alacritty
     ./programs/zsh
-    # ./programs/kitty.nix
+    ./programs/kitty.nix
   ];
 
   # Let Home Manager install and manage itself.
@@ -41,7 +41,7 @@ in
       sumneko-lua-language-server
 
       perlPackages.PLS
-      perl534Packages.PerlTidy
+      # perl534Packages.PerlTidy
       perl534Packages.PerlCritic
       # nodePackages.prettier
       # nodePackages.prettier_d_slim
@@ -98,7 +98,8 @@ in
     zoxide
     starship
     exa
-    neofetch
+    # neofetch
+    neo
     onefetch
     feh
     skim
@@ -157,10 +158,14 @@ in
     tree
     gitlint
     zathura
-    pyright
+    # pyright
     black
     python310Packages.flake8
     freshfetch
+    obsidian
+    perl534Packages.PerlTidy
+    "python3.10-mdformat"
+    nixfmt
 
     #<DISCARDED_PACKAGES>
     # spacebar

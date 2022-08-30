@@ -1,7 +1,4 @@
-{ config
-, pkgs
-, ...
-}: {
+{ config, pkgs, ... }: {
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''
@@ -22,7 +19,8 @@
     repo = "nix-node";
   };
 
-  nix.settings.substituters = [ "https://cache.nixos.org/" "https://nix-node.cachix.org/" ];
+  nix.settings.substituters =
+    [ "https://cache.nixos.org/" "https://nix-node.cachix.org/" ];
 
   system.stateVersion = 4;
 }
