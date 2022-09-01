@@ -1,13 +1,9 @@
-{ config
-, pkgs
-, ...
-}:
+{ config, pkgs, ... }:
 let
   username = "m.manzanares";
   homeDir = "/Users/m.manzanares";
   customNodePackages = pkgs.callPackage ./programs/npm-packages { };
-in
-{
+in {
   imports = [
     ./programs/vim
     ./programs/fish
@@ -31,7 +27,7 @@ in
     package = pkgs.neovim-nightly;
     viAlias = true;
     withPython3 = true;
-    extraConfig = ''luafile ${homeDir}/.config/nvim/nix.init.lua'';
+    extraConfig = "luafile ${homeDir}/.config/nvim/nix.init.lua";
 
     extraPackages = with pkgs; [
       texlab
@@ -55,6 +51,7 @@ in
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
       nodePackages.dockerfile-language-server-nodejs
+      nodePackages.pyright
       # customNodePackages.cssmodules-language-server
     ];
   };
@@ -65,15 +62,9 @@ in
     userEmail = "googlillo@gmail.com";
     # aliases = { prettylog = "..."; };
     extraConfig = {
-      core = {
-        editor = "nvim";
-      };
-      color = {
-        ui = true;
-      };
-      init = {
-        defaultBranch = "main";
-      };
+      core = { editor = "nvim"; };
+      color = { ui = true; };
+      init = { defaultBranch = "main"; };
       # push = { default = "simple"; };
       # pull = { ff = "only"; };
     };
@@ -165,6 +156,8 @@ in
     obsidian
     perl534Packages.PerlTidy
     nixfmt
+    python310Packages.mdformat
+    pipenv
 
     #<DISCARDED_PACKAGES>
     # spacebar
@@ -190,4 +183,3 @@ in
 
   programs.java.enable = true;
 }
-

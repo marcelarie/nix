@@ -39,7 +39,7 @@
           (import (let
             # rev = "master";
             rev =
-              "bf91011a07d7a53a80a8bdeef5a4cd503963baa4"; # neovim 8 working rev
+              "6a8790f60859a7ba074af3d0bc373813f2eac15b"; # neovim 8 working rev
           in builtins.fetchTarball {
             url =
               "https://github.com/nix-community/neovim-nightly-overlay/archive/${rev}.tar.gz";
