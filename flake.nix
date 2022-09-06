@@ -41,6 +41,7 @@
             rev =
               "6a8790f60859a7ba074af3d0bc373813f2eac15b"; # neovim 8 working rev
           in builtins.fetchTarball {
+            sha256 = "1cz836a9hy3j5qna05x27y6dkvc05zqclr8k06331ilfrln2qb2z";
             url =
               "https://github.com/nix-community/neovim-nightly-overlay/archive/${rev}.tar.gz";
           }))

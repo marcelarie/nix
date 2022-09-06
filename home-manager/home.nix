@@ -51,7 +51,7 @@ in {
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
       nodePackages.dockerfile-language-server-nodejs
-      nodePackages.pyright
+      # nodePackages.pyright
       # customNodePackages.cssmodules-language-server
     ];
   };
@@ -89,7 +89,7 @@ in {
     zoxide
     starship
     exa
-    # neofetch
+    neofetch
     neo
     onefetch
     feh
@@ -154,10 +154,10 @@ in {
     python310Packages.flake8
     freshfetch
     obsidian
-    perl534Packages.PerlTidy
+    # perl534Packages.PerlTidy
     nixfmt
     python310Packages.mdformat
-    pipenv
+    # pipenv
 
     #<DISCARDED_PACKAGES>
     # spacebar

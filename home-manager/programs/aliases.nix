@@ -1,8 +1,7 @@
 let
   nixConfig = "~/.nixpkgs";
   home = "/Users/m.manzanares/";
-in
-{
+in {
   ls = "exa";
   l = "ls";
   ll = "exa -l";
@@ -12,6 +11,7 @@ in
   rm = "rm -i"; # Confirm before overwriting something
   df = "df -h"; # Human-readable sizes
   free = "free -m"; # Show sizes in MB
+  pb = "pbcopy";
 
   ".." = "cd ..";
   "..." = "cd ../..";
@@ -37,16 +37,19 @@ in
   #### Personal Git ####
   gb = "git checkout (git branch | fzy | xargs)";
   gbde = "git branch -D (git branch | fzy | xargs)";
-  gstp = "git status --porcelain | awk 'match($1, 'M'){ print $2 }' | paste -sd ' '";
+  gstp =
+    "git status --porcelain | awk 'match($1, 'M'){ print $2 }' | paste -sd ' '";
   grs = "git restore";
   grsa = "git restore *";
   grss = "git restore --staged";
   grssa = "git restore --staged *";
-  glom = "git pull origin (git branch -rl \"*/HEAD\" | rev | cut -d/ -f1 | rev)";
+  glom =
+    ''git pull origin (git branch -rl "*/HEAD" | rev | cut -d/ -f1 | rev)'';
   glof = "git log --oneline -M --stat --follow --";
-  glast = "git log --pretty=format:\"%h\" HEAD^..HEAD";
+  glast = ''git log --pretty=format:"%h" HEAD^..HEAD'';
   gstal = "git stash list";
-  grec = "git log --graph --oneline --decorate ( git fsck --no-reflog | awk \";/dangling commit/ {print $3}\" )";
+  grec = ''
+    git log --graph --oneline --decorate ( git fsck --no-reflog | awk ";/dangling commit/ {print $3}" )'';
   gstapp = "git stash apply";
   gw = "git worktree";
   gwa = "git worktree add";
@@ -110,7 +113,7 @@ in
   live-server = "live-server --no-browser";
   pt = "vi ~/personal/tasks";
   gopt = "cd ~/personal/tasks";
-  wbcn = "curl wttr.in/Barcelona\?0Q";
+  wbcn = "curl wttr.in/Barcelona?0Q";
   create-react-app = "create-react-app --template mini";
   gmod = "git ls-files -m";
   ytmp3 = "youtube-dl --extract-audio --audio-format mp3";
@@ -135,7 +138,7 @@ in
   ta = "tmux attach -t"; # Attaches tmux to a session (example: ta portal)
   tn = "tmux new-session"; # Creates a new session
   tl = "tmux list-sessions"; # Lists all ongoing sessions
-  ts = "tmux switch -t (tmux ls | cut -f1 -d\":\" | fzy)";
+  ts = ''tmux switch -t (tmux ls | cut -f1 -d":" | fzy)'';
   tks = "tmux kill-session -t"; # Kills a session
   two = "~/scripts/tmux/work1.sh"; # Run work auto session script
   tpe = "~/scripts/tmux/pers1.sh"; # Run personal auto session script
@@ -171,7 +174,7 @@ in
   ### Cheat ###
   ch = "cheat";
   che = "cheat -e";
-  chl = "cheat (cheat -l | cut -f1 -d \" \" | fzy)";
+  chl = ''cheat (cheat -l | cut -f1 -d " " | fzy)'';
 
   ### Ctags ###
   ctag = "ctags --recurse = yes";
@@ -179,10 +182,11 @@ in
 
   ### SoySuper ###
   #  re.pl = "echo "source ~/.zshrc && re.pl" | zsh"
-  dz = "zsh -c \" source ~/.zshrc; # dzil build; cpanm --auto-cleanup 0.0001 -n *.tar.gz; dzil clean\" ";
+  dz = ''
+    zsh -c " source ~/.zshrc; # dzil build; cpanm --auto-cleanup 0.0001 -n *.tar.gz; dzil clean" '';
   sdw = "time sc deploy workers";
   sdm = "time sc deploy manager";
-  logcli = "logcli --addr=\"http://monitor-0.ss:3100\"";
+  logcli = ''logcli --addr="http://monitor-0.ss:3100"'';
   sup = "cd ~/clones/work/supers/";
   prove = "provewatcher";
   gpdw = "git push && sc deploy workers";
@@ -206,7 +210,8 @@ in
   #  cry\$ = "curl rate.sx"
   #  scd = "f(){sh ~/scripts/"$argv"(ls ~/scripts/"$argv"/ | fzy)};
   #  fzf = "fzf --preview "([[ -f {} ]] && (bat --style = numbers --color = always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200""
-  luamake = "${home}/.config/nvim/language-servers/lua-language-server/3rd/luamake/luamake";
+  luamake =
+    "${home}/.config/nvim/language-servers/lua-language-server/3rd/luamake/luamake";
 
   # ≃≃≃≃≃≃≃ #
   #   GIT   #
@@ -270,8 +275,8 @@ in
   # gignored = "git ls-files -v | grep "^[ [ :lower: ] ] "";
   git-svn-dcommit-push = "git svn dcommit & git push github master:svntrunk";
 
-  gk = "\gitk --all --branches";
-  gke = "\gitk --all (git log -g --pretty format:%h)";
+  gk = "gitk --all --branches";
+  gke = "gitk --all (git log -g --pretty format:%h)";
 
   gl = "git pull";
   glg = "git log --stat";
@@ -280,8 +285,10 @@ in
   glgga = "git log --graph --decorate --all";
   glgm = "git log --graph --max-count 10";
   glo = "git log --oneline --decorate";
-  glol = "git log --graph --pretty format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
-  glola = "git log --graph --pretty format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all";
+  glol =
+    "git log --graph --pretty format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
+  glola =
+    "git log --graph --pretty format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all";
   glog = "git log --oneline --decorate --graph";
   gloga = "git log --oneline --decorate --graph --all";
 
@@ -310,7 +317,7 @@ in
   grmv = "git remote rename";
   grrm = "git remote remove";
   grset = "git remote set-url";
-  grt = "cd (git rev-parse --show-toplevel || echo \".\")";
+  grt = ''cd (git rev-parse --show-toplevel || echo ".")'';
   gru = "git reset --";
   grup = "git remote update";
   grv = "git remote -v";
@@ -335,13 +342,14 @@ in
   gtv = "git tag | sort -V";
 
   gunignore = "git update-index --no-assume-unchanged";
-  gunwip = "git log -n 1 | grep -q -c \"\ - \-wip\ - \-\" & git reset HEAD~1";
+  gunwip = ''git log -n 1 | grep -q -c " - -wip - -" & git reset HEAD~1'';
   gup = "git pull --rebase";
   gupv = "git pull --rebase -v";
   glum = "git pull upstream master";
 
   gwch = "git whatchanged -p --abbrev-commit --pretty medium";
-  gwip = "git add -A; git rm (git ls-files --deleted) 2> /dev/null; git commit -m \"--wip--\"";
+  gwip = ''
+    git add -A; git rm (git ls-files --deleted) 2> /dev/null; git commit -m "--wip--"'';
 
   ## 1pass ###
   opl = "op item list --vault Private";

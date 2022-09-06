@@ -1,7 +1,4 @@
-{ pkgs
-, config
-, ...
-}: {
+{ pkgs, config, ... }: {
   config.programs.tmux = {
     aggressiveResize = true;
     baseIndex = 1;
@@ -35,6 +32,8 @@
       set-option -g renumber-windows on
       set -g status-bg colour0
       set -g status-fg colour154
+
+      run-shell ~/.nixpkgs/home-manager/programs/tmux/plugins/tmux-urlview/urlview.tmux
     '';
   };
 }
