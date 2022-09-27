@@ -1,6 +1,7 @@
 { config, pkgs, ... }: {
   nix = {
-    package = pkgs.nixFlakes;
+    # package = pkgs.nixFlakes;
+    package   = pkgs.nixVersions.stable;
     extraOptions = ''
       keep-outputs = true
       auto-optimise-store = true
