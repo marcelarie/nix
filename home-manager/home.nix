@@ -101,6 +101,9 @@ in {
     lua
     lua53Packages.luarocks
     python
+    python39Packages.pynvim
+    python310Packages.flake8
+    python310Packages.mdformat
     fd
     sad
     gh
@@ -117,8 +120,7 @@ in {
     mpv
     yt-dlp
     pfetch
-    python39Packages.pynvim
-    tridactyl-native
+    # tridactyl-native
     jq
     (yarn.override { nodejs = null; })
     htop
@@ -151,12 +153,10 @@ in {
     zathura
     # pyright
     black
-    python310Packages.flake8
     freshfetch
     obsidian
     # perl534Packages.PerlTidy
     nixfmt
-    python310Packages.mdformat
     # pipenv
 
     #<DISCARDED_PACKAGES>

@@ -89,7 +89,7 @@ in {
   mi = "nvim -u ~/.config/nvim/minimal-init.lua";
   #  mi = ";nvim -c "colorscheme monarized""
   revi = "bash ~/scripts/install-last-neovim.sh";
-  rc = "nvim ~/.config/nvim/nix.init.*";
+  rc = "nvim ~/.config/nvim/*init.*";
   gorc = "cd ~/.config/nvim/";
 
   #### Docker ####
