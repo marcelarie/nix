@@ -19,7 +19,7 @@
   outputs = inputs@{ self, nur, nixpkgs, stable, darwin, home-manager, spacebar
     , neovim-nightly-overlay, }:
     let
-      username = "m.manzanares";
+      username = "marcelmanzanares2";
       system = "aarch64-darwin";
       hostname = "mmanzanares-MacBook-Pro";
       pkg-sets = final: prev: {

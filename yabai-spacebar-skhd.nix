@@ -73,10 +73,10 @@ in {
       alt - k : yabai -m window --focus next || yabai -m window --focus first
 
       # open alacritty
-      # alt - return : /Applications/Alacritty.app/Contents/MacOS/alacritty -e '/etc/profiles/per-user/m.manzanares/bin/fish'
+      # alt - return : /Applications/Alacritty.app/Contents/MacOS/alacritty -e '/etc/profiles/per-user/marcelmanzanares2/bin/fish'
 
       # open alacritty
-      alt - return : /etc/profiles/per-user/m.manzanares/bin/kitty --single-instance '/etc/profiles/per-user/m.manzanares/bin/fish'
+      alt - return : /etc/profiles/per-user/marcelmanzanares2/bin/kitty --single-instance '/etc/profiles/per-user/marcelmanzanares2/bin/fish'
 
       # close window
       shift + alt - q : skhd --key "cmd - w"

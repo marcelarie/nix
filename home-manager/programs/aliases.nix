@@ -1,6 +1,6 @@
 let
   nixConfig = "~/.nixpkgs";
-  home = "/Users/m.manzanares/";
+  home = "/Users/marcelmanzanares2/";
 in {
   ls = "exa";
   l = "ls";

@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 let
-  username = "m.manzanares";
-  homeDir = "/Users/m.manzanares";
+  username = "marcelmanzanares2";
+  homeDir = "/Users/marcelmanzanares2";
   customNodePackages = pkgs.callPackage ./programs/npm-packages { };
 in {
   imports = [

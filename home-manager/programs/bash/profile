@@ -1,2 +1,2 @@
-export PATH=$PATH:/Users/m.manzanares/clones/lang_servers/ltex-ls-15.2.1-nightly/bin/
+export PATH=$PATH:/Users/marcelmanzanares2/clones/lang_servers/ltex-ls-15.2.1-nightly/bin/
 source ~/.bashrc
