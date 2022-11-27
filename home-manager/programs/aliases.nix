@@ -40,7 +40,7 @@ in {
   gstp =
     "git status --porcelain | awk 'match($1, 'M'){ print $2 }' | paste -sd ' '";
   grs = "git restore";
-  grsa = "git restore *";
+  grsa = "git restore .";
   grss = "git restore --staged";
   grssa = "git restore --staged *";
   glom =
@@ -334,6 +334,7 @@ in {
   gstaa = "git stash apply";
   gstd = "git stash drop";
   gstl = "git stash list";
+  gstpo = "git stash pop";
   # gstp = "git stash pop";
   gsts = "git stash show --text";
   gsu = "git submodule update";
@@ -354,6 +355,8 @@ in {
   ## 1pass ###
   opl = "op item list --vault Private";
   opg = "op item get";
+
+  pbc = "pbcopy";
 
   ## scripts ##
   # cd = "source ~/scripts/zd-fish.fish";

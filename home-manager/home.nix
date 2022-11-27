@@ -3,7 +3,8 @@ let
   username = "marcelmanzanares2";
   homeDir = "/Users/marcelmanzanares2";
   customNodePackages = pkgs.callPackage ./programs/npm-packages { };
-in {
+in
+{
   imports = [
     ./programs/vim
     ./programs/fish
@@ -22,39 +23,15 @@ in {
 
   nixpkgs.config.allowUnfree = true;
 
-  programs.neovim = {
-    enable = true;
-    package = pkgs.neovim-nightly;
-    viAlias = true;
-    withPython3 = true;
-    extraConfig = "luafile ${homeDir}/.config/nvim/nix.init.lua";
-
-    extraPackages = with pkgs; [
-      texlab
-      sqlite
-      tree-sitter
-      rust-analyzer
-      sumneko-lua-language-server
-
-      perlPackages.PLS
-      # perl534Packages.PerlTidy
-      perl534Packages.PerlCritic
-      # nodePackages.prettier
-      # nodePackages.prettier_d_slim
-
-      nodePackages.eslint_d
-      nodePackages.typescript
-      nodePackages.intelephense
-      nodePackages.vim-language-server
-      nodePackages.bash-language-server
-      nodePackages.yaml-language-server
-      nodePackages.typescript-language-server
-      nodePackages.vscode-langservers-extracted
-      nodePackages.dockerfile-language-server-nodejs
-      # nodePackages.pyright
-      # customNodePackages.cssmodules-language-server
-    ];
-  };
+  # programs.neovim = {
+  #   enable = true;
+  #   package = pkgs.neovim-nightly;
+  #   viAlias = true;
+  #   withPython3 = true;
+  #   extraConfig = "luafile ${homeDir}/.config/nvim/init.lua";
+  #
+  #   extraPackages = with pkgs; [ ];
+  # };
 
   programs.git = {
     enable = true;
@@ -80,6 +57,32 @@ in {
   };
 
   home.packages = with pkgs; [
+    # neovim stuff
+    texlab
+    sqlite
+    tree-sitter
+    rust-analyzer
+    sumneko-lua-language-server
+
+    perlPackages.PLS
+    # perl534Packages.PerlTidy
+    perl534Packages.PerlCritic
+    # nodePackages.prettier
+    # nodePackages.prettier_d_slim
+
+    # nodePackages.eslint_d
+    nodePackages.typescript
+    nodePackages.typescript-language-server
+    nodePackages.intelephense
+    nodePackages.vim-language-server
+    nodePackages.bash-language-server
+    nodePackages.yaml-language-server
+    nodePackages.vscode-langservers-extracted
+    nodePackages.vscode-json-languageserver
+    nodePackages.dockerfile-language-server-nodejs
+    # nodePackages.pyright
+    # customNodePackages.cssmodules-language-server
+
     coreutils
     curl
     wget
@@ -126,8 +129,6 @@ in {
     htop
     # mongodb
     mongodb-tools
-    nodePackages.speed-test
-    nodePackages.pnpm
     fzf
     lf
     cowsay
@@ -143,7 +144,12 @@ in {
     exercism
     shfmt
     bashInteractive
+    # nodePackages.eslint_d
+    nodePackages.speed-test
+    nodePackages.pnpm
     nodePackages.typescript
+    nodePackages.typescript-language-server
+    nodePackages.bash-language-server
     rnix-lsp
     vifm
     pm2
@@ -157,6 +163,9 @@ in {
     obsidian
     # perl534Packages.PerlTidy
     nixfmt
+    ttyd
+    ffmpeg
+    quich
     # pipenv
 
     #<DISCARDED_PACKAGES>

@@ -133,6 +133,14 @@ set fish_greeting
 
 fish_vi_key_bindings
 
+for p in /run/current-system/sw/bin
+    if not contains $p $fish_user_paths
+        set -g fish_user_paths $p $fish_user_paths
+    end
+end
+
+status --is-interactive; and rbenv init - fish | source
+
 # Generated for envman. Do not edit.
 # test -s "$HOME/.config/envman/load.fish"; and source "$HOME/.config/envman/load.fish"
 starship init fish | source

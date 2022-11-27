@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     stable.url = "github:nixos/nixpkgs/nixos-21.11";
+    # unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    # nixpkgs.follows = "unstable";
 
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -39,16 +41,17 @@
           # (import (let
           #   # rev = "master";
           #   rev =
-          #     "6a8790f60859a7ba074af3d0bc373813f2eac15b"; # neovim 8 working rev
+          #     # "6a8790f60859a7ba074af3d0bc373813f2eac15b"; # neovim 8 working rev
+          #     "ea619a2e7d73af4e8d8500c476bf9bcd68046f98"; # neovim 9 working rev
           # in builtins.fetchTarball {
-          #   sha256 = "1cz836a9hy3j5qna05x27y6dkvc05zqclr8k06331ilfrln2qb2z";
+          #   sha256 = "1451nkvyl3dp0dm399gcdmsa978l2j6w3cjq0fl3ry23nr3vapfr";
           #   url =
           #     "https://github.com/nix-community/neovim-nightly-overlay/archive/${rev}.tar.gz";
           # }))
         ];
       };
       configuration = { pkgs, ... }: {
-        package   = pkgs.nixVersions.stable;
+        package = pkgs.nixVersions.stable;
         # nix.package = pkgs.nixFlakes;
         services.nix-daemon.enable = true;
       };

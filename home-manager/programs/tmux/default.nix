@@ -3,7 +3,7 @@
     aggressiveResize = true;
     baseIndex = 1;
     enable = true;
-    terminal = "screen-256color";
+    # terminal = "screen-256color";
     clock24 = true;
     customPaneNavigationAndResize = true;
     escapeTime = 0;
@@ -32,6 +32,7 @@
       set-option -g renumber-windows on
       set -g status-bg colour0
       set -g status-fg colour154
+      set -ga terminal-overrides ",xterm-256color:Tc"
 
       run-shell ~/.nixpkgs/home-manager/programs/tmux/plugins/tmux-urlview/urlview.tmux
     '';
