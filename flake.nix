@@ -16,10 +16,11 @@
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     spacebar.url = "github:cmacrae/spacebar/v1.4.0";
+    devenv.url = "github:cachix/devenv/v0.4";
   };
 
   outputs = inputs@{ self, nur, nixpkgs, stable, darwin, home-manager, spacebar
-    , neovim-nightly-overlay, }:
+    , neovim-nightly-overlay, devenv, }:
     let
       username = "marcelmanzanares2";
       system = "aarch64-darwin";

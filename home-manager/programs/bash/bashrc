@@ -112,7 +112,11 @@ export PATH=/usr/local/bin:$PATH
 
 # STUART
 export STUART_SSH_AGENT=/run/host-services/ssh-auth.sock
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
+eval "$(rbenv init -)"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(zoxide init bash)"
 eval "$(starship init bash)"

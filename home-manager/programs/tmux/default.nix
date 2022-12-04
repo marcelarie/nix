@@ -35,6 +35,7 @@
       set -ga terminal-overrides ",xterm-256color:Tc"
 
       run-shell ~/.nixpkgs/home-manager/programs/tmux/plugins/tmux-urlview/urlview.tmux
+      # tmux source-file ~/.nixpkgs/home-manager/programs/tmux/plugins/tmux-statusline-themes/themes/gruvbox-dark.tmuxtheme
     '';
   };
 }

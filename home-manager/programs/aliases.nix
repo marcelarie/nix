@@ -73,7 +73,7 @@ in {
   krc = "nvim ${nixConfig}/home-manager/programs/kitty.nix";
   wrc = "nvim ~/.config/wezterm/wezterm.lua";
   # brc = "nvim ~/.bashrc";
-  brc = "nvim ${nixConfig}/home-manager/programs/bash/default.nix";
+  brc = "nvim ${nixConfig}/home-manager/programs/bash/bashrc";
   lrc = "cd ~/.config/leftwm & nvim config.toml";
   clones = "~/clones";
   dots = "vi ~/.gitignore";

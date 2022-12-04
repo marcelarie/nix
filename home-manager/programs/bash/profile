@@ -1,4 +1,6 @@
 export PATH=$PATH:/Users/marcelmanzanares2/clones/lang_servers/ltex-ls-15.2.1-nightly/bin/:/Users/marcelmanzanares2/.local/bin
+export PATH="/Users/marcelmanzanares2/.pnpm:$PATH"
+export PNPM_HOME="/Users/marcelmanzanares2/.pnpm"
 eval "$(direnv hook bash)"
 eval "$(rbenv init - bash)"
 source ~/.bashrc

@@ -3,8 +3,7 @@ let
   username = "marcelmanzanares2";
   homeDir = "/Users/marcelmanzanares2";
   customNodePackages = pkgs.callPackage ./programs/npm-packages { };
-in
-{
+in {
   imports = [
     ./programs/vim
     ./programs/fish
@@ -80,7 +79,7 @@ in
     nodePackages.vscode-langservers-extracted
     nodePackages.vscode-json-languageserver
     nodePackages.dockerfile-language-server-nodejs
-    # nodePackages.pyright
+    nodePackages.pyright
     # customNodePackages.cssmodules-language-server
 
     coreutils
@@ -107,6 +106,7 @@ in
     python39Packages.pynvim
     python310Packages.flake8
     python310Packages.mdformat
+    python39Packages.pip
     fd
     sad
     gh
