@@ -85,6 +85,8 @@ in {
 
   #### Nvim ####
   vi = "nvim";
+  iv = "nvim";
+  vo = "nvim";
   bi = "nvim -c 'colorscheme OceanicNext'";
   mi = "nvim -u ~/.config/nvim/minimal-init.lua";
   #  mi = ";nvim -c "colorscheme monarized""
@@ -344,8 +346,8 @@ in {
 
   gunignore = "git update-index --no-assume-unchanged";
   gunwip = ''git log -n 1 | grep -q -c " - -wip - -" & git reset HEAD~1'';
-  gup = "git pull --rebase";
-  gupv = "git pull --rebase -v";
+  glr = "git pull --rebase";
+  glrv = "git pull --rebase -v";
   glum = "git pull upstream master";
 
   gwch = "git whatchanged -p --abbrev-commit --pretty medium";

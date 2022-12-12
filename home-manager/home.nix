@@ -166,6 +166,7 @@ in {
     ttyd
     ffmpeg
     quich
+    lynx
     # pipenv
 
     #<DISCARDED_PACKAGES>
