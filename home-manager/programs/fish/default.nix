@@ -1,13 +1,8 @@
-{ pkgs
-, config
-, lib
-, ...
-}:
+{ pkgs, config, lib, ... }:
 let
   nixConfig = "~/.nixpkgs";
   home = "/Users/marcelmanzanares2/";
-in
-{
+in {
   config.programs.fish = {
     enable = true;
     shellInit = builtins.readFile ./prenix-config.fish;
@@ -19,7 +14,7 @@ in
         && git merge origin/$branch
       '';
       gitignore = "curl -sL https://www.gitignore.io/api/$argv";
-      goo = "open \"https://www.google.com/search?q=$argv\" ";
+      goo = ''open "https://www.google.com/search?q=$argv" '';
       current_branch = "git symbolic-ref --short HEAD";
       nfs = "sudo darwin-rebuild switch --flake ~/.nixpkgs# $argv;";
       nsp = "nix-shell -p $argv";
@@ -40,6 +35,15 @@ in
     };
     shellAliases = import ../aliases.nix;
     plugins = [
+      {
+        name = "fish-abbreviation-tips";
+        src = pkgs.fetchFromGitHub {
+          owner = "gazorby";
+          repo = "fish-abbreviation-tips";
+          rev = "4ff1f565b5773aadba028051f432984def921762";
+          sha256 = "fveTvR+T6IiX8Zk5m6zToo1OtZc1VyrCHfOG63e9b64=";
+        };
+      }
       {
         name = "foreign-env";
         src = pkgs.fetchFromGitHub {

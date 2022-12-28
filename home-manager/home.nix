@@ -167,6 +167,9 @@ in {
     ffmpeg
     quich
     lynx
+    streamlink
+    watch
+    lnav
     # pipenv
 
     #<DISCARDED_PACKAGES>

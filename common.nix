@@ -30,7 +30,7 @@ with lib; {
     fonts.fonts = with pkgs; [
       font-awesome
       recursive
-      (nerdfonts.override { fonts = [ "FiraCode" ]; })
+      (nerdfonts.override { fonts = [ "FiraCode" "ShareTechMono" ]; })
     ];
 
     # services.skhd = {

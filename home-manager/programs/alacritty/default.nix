@@ -43,7 +43,6 @@
         let
           # fontname = "SauceCodePro Nerd Font Mono";
           fontname = "FiraCode Nerd Font";
-          # fontname = "JetBrains Mono";
           # fontname = "Recursive Mono Linear Static";
           # fontname = "FiraCode Nerd Font Mono";
         in
