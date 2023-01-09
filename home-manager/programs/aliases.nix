@@ -360,6 +360,8 @@ in {
 
   pbc = "pbcopy";
 
+  myip = "dig +short myip.opendns.com @resolver1.opendns.com";
+
   ## scripts ##
   # cd = "source ~/scripts/zd-fish.fish";
   # z = "source ~/scripts/zd-fish-zoxide.fish";
