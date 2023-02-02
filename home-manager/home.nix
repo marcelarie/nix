@@ -5,13 +5,14 @@ let
   customNodePackages = pkgs.callPackage ./programs/npm-packages { };
 in {
   imports = [
-    ./programs/vim
+    # ./programs/vim
     ./programs/fish
     ./programs/bash
     ./programs/tmux
     ./programs/alacritty
     ./programs/zsh
     ./programs/kitty.nix
+    # ./programs/starship.nix
   ];
 
   # Let Home Manager install and manage itself.
@@ -89,11 +90,11 @@ in {
     rustup
     pkg-config
     zoxide
-    starship
+    # starship
     exa
     neofetch
     neo
-    onefetch
+    # onefetch
     feh
     skim
     fzf
@@ -102,7 +103,7 @@ in {
     ripgrep
     lua
     lua53Packages.luarocks
-    python
+    # python3
     python39Packages.pynvim
     python310Packages.flake8
     python310Packages.mdformat
@@ -125,7 +126,7 @@ in {
     pfetch
     # tridactyl-native
     jq
-    (yarn.override { nodejs = null; })
+    # (yarn.override { nodejs = null; })
     htop
     # mongodb
     mongodb-tools
@@ -170,6 +171,12 @@ in {
     streamlink
     watch
     lnav
+    gopls
+    gofumpt
+    jet
+    shellcheck
+    gum
+    cheat
     # pipenv
 
     #<DISCARDED_PACKAGES>

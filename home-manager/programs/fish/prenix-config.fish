@@ -139,7 +139,11 @@ for p in /run/current-system/sw/bin
     end
 end
 
+# status --is-interactive; and rbenv init - fish | source
+
+set -g fish_user_paths /Users/marcelmanzanares2/scripts $fish_user_paths
 status --is-interactive; and rbenv init - fish | source
+
 
 # Generated for envman. Do not edit.
 # test -s "$HOME/.config/envman/load.fish"; and source "$HOME/.config/envman/load.fish"

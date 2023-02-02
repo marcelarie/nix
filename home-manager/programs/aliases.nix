@@ -81,7 +81,7 @@ in {
 
   #### Zk ####
   zkn = "cd ~/clones/pers/notes; zk new";
-  zko = "cd ~/clones/pers/notes; nvim -c 'ZkNotes'";
+  zko = "cd ~/clones/pers/notes; nvim -c 'ZkNotes'; cd -";
 
   #### Nvim ####
   vi = "nvim";
@@ -138,6 +138,7 @@ in {
   #### Tmux ####
   #  t = "tmux attach || tmux new-session" # Attaches tmux to the last session; creates a new session if none exists.
   ta = "tmux attach -t"; # Attaches tmux to a session (example: ta portal)
+  tas = "/Users/marcelmanzanares2/scripts/tmux/tmux-attach-search.sh"; # Selects and ttaches to a tmux session
   tn = "tmux new-session"; # Creates a new session
   tl = "tmux list-sessions"; # Lists all ongoing sessions
   ts = ''tmux switch -t (tmux ls | cut -f1 -d":" | fzy)'';
@@ -286,11 +287,13 @@ in {
   glgg = "git log --graph";
   glgga = "git log --graph --decorate --all";
   glgm = "git log --graph --max-count 10";
+  glod = ''
+    git log --pretty=format:"%C(yellow)%h %Creset%C(cyan)%C(bold)%ad%Creset %C(green)%Creset%s" --date=short'';
   glo = "git log --oneline --decorate";
   glol =
-    "git log --graph --pretty format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
+    "git log --graph --pretty:format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
   glola =
-    "git log --graph --pretty format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all";
+    "git log --graph --pretty:format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all";
   glog = "git log --oneline --decorate --graph";
   gloga = "git log --oneline --decorate --graph --all";
 
