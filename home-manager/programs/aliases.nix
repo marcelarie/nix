@@ -80,7 +80,7 @@ in {
   alrc = "nvim ${nixConfig}/home-manager/programs/aliases.nix";
 
   #### Zk ####
-  zkn = "cd ~/clones/pers/notes; zk new";
+  zkn = "cd ~/clones/pers/notes; ~/scripts/zk-new.sh";
   zko = "cd ~/clones/pers/notes; nvim -c 'ZkNotes'; cd -";
 
   #### Nvim ####
@@ -123,7 +123,7 @@ in {
   xp = "xsel --clipboard --output";
   node15 = "source /usr/share/nvm/init-nvm.sh";
   scp = "sh ~/scripts/(ls ~/scripts/ | fzy)"; # scripts selector
-  env = "printenv | fzy"; # scripts selector
+  # env = "printenv | fzy"; # scripts selector
   nm = "mw -Y && neomutt"; # refresh and open neomutt
   mc = "mcfly search";
   own = "zyc /home/marcel/clones/own";
@@ -138,7 +138,7 @@ in {
   #### Tmux ####
   #  t = "tmux attach || tmux new-session" # Attaches tmux to the last session; creates a new session if none exists.
   ta = "tmux attach -t"; # Attaches tmux to a session (example: ta portal)
-  tas = "/Users/marcelmanzanares2/scripts/tmux/tmux-attach-search.sh"; # Selects and ttaches to a tmux session
+  tas = "${home}/scripts/tmux/tmux-attach-search.sh"; # Selects and ttaches to a tmux session
   tn = "tmux new-session"; # Creates a new session
   tl = "tmux list-sessions"; # Lists all ongoing sessions
   ts = ''tmux switch -t (tmux ls | cut -f1 -d":" | fzy)'';
@@ -178,6 +178,9 @@ in {
   ch = "cheat";
   che = "cheat -e";
   chl = ''cheat (cheat -l | cut -f1 -d " " | fzy)'';
+
+  ### open ai ###
+  # oat = "${home}/scripts/openai/oat.sh";
 
   ### Ctags ###
   ctag = "ctags --recurse = yes";
@@ -360,6 +363,11 @@ in {
   ## 1pass ###
   opl = "op item list --vault Private";
   opg = "op item get";
+
+  ### gh ###
+  gpr = "gh pr view";
+  gprb = "gh pr view -w";
+  gpre = "gh pr edit";
 
   pbc = "pbcopy";
 

@@ -133,6 +133,8 @@ set fish_greeting
 
 fish_vi_key_bindings
 
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
 for p in /run/current-system/sw/bin
     if not contains $p $fish_user_paths
         set -g fish_user_paths $p $fish_user_paths

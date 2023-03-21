@@ -102,7 +102,10 @@ in {
     bat
     ripgrep
     lua
-    lua53Packages.luarocks
+    luajitPackages.mpack
+    entr
+
+    # lua53Packages.luarocks
     # python3
     python39Packages.pynvim
     python310Packages.flake8
@@ -136,7 +139,7 @@ in {
     cht-sh
     tree-sitter
     manix # nix docs on the cli
-    nodePackages.node2nix
+    # nodePackages.node2nix
     go
     helix
     zk
@@ -161,7 +164,7 @@ in {
     # pyright
     black
     freshfetch
-    obsidian
+    # obsidian
     # perl534Packages.PerlTidy
     nixfmt
     ttyd
@@ -177,6 +180,8 @@ in {
     shellcheck
     gum
     cheat
+    grafana
+    # vlang
     # pipenv
 
     #<DISCARDED_PACKAGES>

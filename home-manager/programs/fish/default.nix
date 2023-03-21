@@ -7,6 +7,7 @@ in {
     enable = true;
     shellInit = builtins.readFile ./prenix-config.fish;
     functions = {
+      mdp = "ls $argv | entr -c glow $argv";
       gld = ''
         set branch (git rev-parse --abbrev-ref HEAD)
         git fetch \
@@ -18,6 +19,7 @@ in {
       current_branch = "git symbolic-ref --short HEAD";
       nfs = "sudo darwin-rebuild switch --flake ~/.nixpkgs# $argv;";
       nsp = "nix-shell -p $argv";
+      oat = "${home}scripts/open-ai/oat.sh $argv";
       nvm = "bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv";
       # hms = "cd ~/.config/nixos/; git add --all; home-manager switch --flake . $argv; cd -";
       # hmb = "cd ~/.config/nixos/; git add --all; home-manager build --flake . $argv; cd -";
@@ -87,6 +89,24 @@ in {
           repo = "nvm.fish";
           rev = "81170ef5bc127af4622aa456122c77f363f247bc";
           sha256 = "0ra0yj8nksza1j84l5v5063w0cyxwwb7sxqggf2rlh3i3j77ldz6";
+        };
+      }
+      # {
+      #   name = "fish-async-prompt";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "acomagu";
+      #     repo = "fish-async-prompt";
+      #     rev = "4c732cc043b8dd04e64a169ec6bbf3a9b394819f";
+      #     sha256 = "YgqZINmY4nKphlqwHo2B0NfP4nmSxIIuAMUuoftI9Lg=";
+      #   };
+      # }
+      {
+        name = "autopair";
+        src = pkgs.fetchFromGitHub {
+          owner = "jorgebucaran";
+          repo = "autopair.fish";
+          rev = "4d1752ff5b39819ab58d7337c69220342e9de0e2";
+          sha256 = "qt3t1iKRRNuiLWiVoiAYOu+9E7jsyECyIqZJ/oRIT1A=";
         };
       }
       {
