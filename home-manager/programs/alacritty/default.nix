@@ -42,7 +42,9 @@
       font =
         let
           # fontname = "SauceCodePro Nerd Font Mono";
-          fontname = "FiraCode Nerd Font";
+          # fontname = "IosevkaTerm Nerd Font";
+          fontname = "JetBrainsMono Nerd Font";
+          # fontname = "FiraCode Nerd Font";
           # fontname = "Recursive Mono Linear Static";
           # fontname = "FiraCode Nerd Font Mono";
         in
@@ -60,7 +62,7 @@
             # style = "Semibold Italic";
             style = "Light Italic";
           };
-          size = 13;
+          size = 14;
           glyph_offset = {
             x = 0;
             y = 0;
@@ -74,7 +76,7 @@
       cursor.style = "Block";
       draw_bold_text_with_bright_colors = false;
 
-      colors = import ./colors/lighthaus.nix;
+      colors = import ./colors/kanagawa.nix;
       bell = {
         animation = "EaseOutExpo";
         color = "0xffffff";

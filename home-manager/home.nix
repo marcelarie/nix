@@ -61,7 +61,7 @@ in {
     texlab
     sqlite
     tree-sitter
-    rust-analyzer
+    # rust-analyzer
     sumneko-lua-language-server
 
     perlPackages.PLS
@@ -181,6 +181,8 @@ in {
     gum
     cheat
     grafana
+    instaloader
+    zig
     # vlang
     # pipenv
 

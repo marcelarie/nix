@@ -4,7 +4,7 @@
     package   = pkgs.nixVersions.stable;
     extraOptions = ''
       keep-outputs = true
-      auto-optimise-store = true
+      auto-optimise-store = false
       extra-platforms = x86_64-darwin aarch64-darwin
       keep-derivations = true
       experimental-features = nix-command flakes

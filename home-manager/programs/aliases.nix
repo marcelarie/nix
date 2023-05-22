@@ -12,6 +12,7 @@ in {
   df = "df -h"; # Human-readable sizes
   free = "free -m"; # Show sizes in MB
   pb = "pbcopy";
+  # kp = "killport";
 
   ".." = "cd ..";
   "..." = "cd ../..";
@@ -51,11 +52,13 @@ in {
   grec = ''
     git log --graph --oneline --decorate ( git fsck --no-reflog | awk ";/dangling commit/ {print $3}" )'';
   gstapp = "git stash apply";
+  gdfc = " git diff --name-only origin/HEAD";
   gw = "git worktree";
   gwa = "git worktree add";
   gwl = "git worktree list";
   gwp = "git worktree prune";
   gwr = "git worktree remove";
+  nvm = "echo 'you are using fnm now'; fnm";
 
   #### Develop ####
   ys = "yarn start";
@@ -87,6 +90,7 @@ in {
   vi = "nvim";
   iv = "nvim";
   vo = "nvim";
+  vu = "nvim";
   bi = "nvim -c 'colorscheme OceanicNext'";
   mi = "nvim -u ~/.config/nvim/minimal-init.lua";
   #  mi = ";nvim -c "colorscheme monarized""
@@ -126,10 +130,10 @@ in {
   # env = "printenv | fzy"; # scripts selector
   nm = "mw -Y && neomutt"; # refresh and open neomutt
   mc = "mcfly search";
-  own = "zyc /home/marcel/clones/own";
-  learn = "zyc /home/marcel/clones/learning";
-  fork = "zyc /home/marcel/clones/forks";
-  work = "zyc /home/marcel/clones/work";
+  own = "zyc ${home}/clones/own";
+  learn = "zyc ${home}/clones/learning";
+  fork = "zyc ${home}/clones/forks";
+  work = "zyc ${home}/clones/work";
   # locate = "plocate";
   # klay  =  "setxkbmap (printf \" es\nus\nus (dvorak)\nes (dvorak)\n " | fzy)";
   af = "xdotool type --delay 0 ( alias | fzy | awk -F' ' '{print $2}')";
@@ -143,8 +147,11 @@ in {
   tl = "tmux list-sessions"; # Lists all ongoing sessions
   ts = ''tmux switch -t (tmux ls | cut -f1 -d":" | fzy)'';
   tks = "tmux kill-session -t"; # Kills a session
+  tmsc = "tmux switch-client -t"; # Kills a session
   two = "~/scripts/tmux/work1.sh"; # Run work auto session script
   tpe = "~/scripts/tmux/pers1.sh"; # Run personal auto session script
+  muxi =  "tmuxinator";
+  muxis =  "tmuxinator start";
 
   #### Rust ####
   cn = "cargo new";
@@ -259,10 +266,11 @@ in {
   gcs = "git commit -S";
 
   gd = "git diff";
+  gdt = "GIT_EXTERNAL_DIFF=difft git diff";
   gds = "git diff --staged";
   gdca = "git diff --cached";
   gdct = "git describe --tags `git rev-list --tags --max-count 1`";
-  gdt = "git diff-tree --no-commit-id --name-only -r";
+  gdtr = "git diff-tree --no-commit-id --name-only -r";
   gdw = "git diff --word-diff";
 
   gf = "git fetch";
@@ -368,6 +376,7 @@ in {
   gpr = "gh pr view";
   gprb = "gh pr view -w";
   gpre = "gh pr edit";
+  ghstr = "${home}/scripts/gh-stars.sh";
 
   pbc = "pbcopy";
 

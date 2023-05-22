@@ -17,7 +17,7 @@ in {
       gitignore = "curl -sL https://www.gitignore.io/api/$argv";
       goo = ''open "https://www.google.com/search?q=$argv" '';
       current_branch = "git symbolic-ref --short HEAD";
-      nfs = "sudo darwin-rebuild switch --flake ~/.nixpkgs# $argv;";
+      nfs = "sudo darwin-rebuild switch --fallback --flake ~/.nixpkgs# $argv;";
       nsp = "nix-shell -p $argv";
       oat = "${home}scripts/open-ai/oat.sh $argv";
       nvm = "bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv";

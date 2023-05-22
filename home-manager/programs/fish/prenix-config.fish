@@ -150,3 +150,12 @@ status --is-interactive; and rbenv init - fish | source
 # Generated for envman. Do not edit.
 # test -s "$HOME/.config/envman/load.fish"; and source "$HOME/.config/envman/load.fish"
 starship init fish | source
+
+# Atuin config
+set -gx ATUIN_NOBIND "true"
+status --is-interactive; atuin init fish | source
+bind --erase \cr
+bind -M insert \cr _atuin_search
+# end
+
+fnm env --use-on-cd | source
